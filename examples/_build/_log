@@ -1,0 +1,319 @@
+### Starting build.
+# Target: mutualEx.ml.depends, tags: { bin_annot, debug, extension:ml, file:mutualEx.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules mutualEx.ml > mutualEx.ml.depends # cached
+# Target: src/cmdline.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/cmdline.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/cmdline.mli > src/cmdline.mli.depends # cached
+# Target: src/cmdline.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/cmdline.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/cmdline.cmi src/cmdline.mli # cached
+# Target: src/formula.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/formula.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/formula.mli > src/formula.mli.depends # cached
+# Target: src/paramecium.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/paramecium.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/paramecium.mli > src/paramecium.mli.depends # cached
+# Target: src/paramecium.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/paramecium.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/paramecium.cmi src/paramecium.mli # cached
+# Target: src/formula.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/formula.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/formula.cmi src/formula.mli # cached
+# Target: src/invFinder.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/invFinder.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/invFinder.mli > src/invFinder.mli.depends # cached
+# Target: src/loach.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/loach.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/loach.mli > src/loach.mli.depends # cached
+# Target: src/loach.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/loach.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/loach.cmi src/loach.mli # cached
+# Target: src/invFinder.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/invFinder.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/invFinder.cmi src/invFinder.mli # cached
+# Target: src/utils.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/utils.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/utils.mli > src/utils.mli.depends # cached
+# Target: src/utils.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/utils.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/utils.cmi src/utils.mli # cached
+# Target: mutualEx.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:mutualEx.cmo, file:mutualEx.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o mutualEx.cmo mutualEx.ml # cached
+# Target: src/cmdline.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/cmdline.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/cmdline.ml > src/cmdline.ml.depends # cached
+# Target: src/client.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/client.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/client.mli > src/client.mli.depends
+# Target: src/murphi.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/murphi.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/murphi.mli > src/murphi.mli.depends # cached
+# Target: src/murphi.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/murphi.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/murphi.cmi src/murphi.mli # cached
+# Target: src/smv.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/smv.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/smv.mli > src/smv.mli.depends # cached
+# Target: src/smv.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/smv.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smv.cmi src/smv.mli # cached
+# Target: src/client.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/client.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/client.cmi src/client.mli
+# Target: src/formula.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/formula.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/formula.ml > src/formula.ml.depends # cached
+# Target: src/generalize.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/generalize.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/generalize.mli > src/generalize.mli.depends # cached
+# Target: src/generalize.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/generalize.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/generalize.cmi src/generalize.mli # cached
+# Target: src/smt.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/smt.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/smt.mli > src/smt.mli.depends # cached
+# Target: src/smt.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/smt.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smt.cmi src/smt.mli # cached
+# Target: src/toStr.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/toStr.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/toStr.mli > src/toStr.mli.depends # cached
+# Target: src/toStr.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/toStr.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/toStr.cmi src/toStr.mli # cached
+# Target: src/formula.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/formula.cmo, file:src/formula.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/formula.cmo src/formula.ml # cached
+# Target: src/invFinder.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/invFinder.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/invFinder.ml > src/invFinder.ml.depends # cached
+# Target: src/loach.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/loach.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/loach.ml > src/loach.ml.depends # cached
+# Target: src/loach.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/loach.cmo, file:src/loach.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/loach.cmo src/loach.ml # cached
+# Target: src/paramecium.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/paramecium.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/paramecium.ml > src/paramecium.ml.depends # cached
+# Target: src/paramecium.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/paramecium.cmo, file:src/paramecium.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/paramecium.cmo src/paramecium.ml # cached
+# Target: src/utils.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/utils.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/utils.ml > src/utils.ml.depends # cached
+# Target: src/utils.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/utils.cmo, file:src/utils.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/utils.cmo src/utils.ml # cached
+# Target: src/cmdline.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/cmdline.cmo, file:src/cmdline.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/cmdline.cmo src/cmdline.ml
+# Target: src/invFinder.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/invFinder.cmo, file:src/invFinder.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/invFinder.cmo src/invFinder.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/invFinder.cmo src/invFinder.ml
+File "src/invFinder.ml", line 133, characters 6-28:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+AllRuleInst _
+File "src/invFinder.ml", line 278, characters 27-95:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+File "src/invFinder.ml", line 298, characters 27-107:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+File "src/invFinder.ml", line 264, characters 2-1315:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+(ForallFormula (_, _)|ExistFormula (_, _))
+File "src/invFinder.ml", line 312, characters 24-116:
+Warning 16: this optional argument cannot be erased.
+File "src/invFinder.ml", line 321, characters 8-19:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+(Chaos|Miracle|UIP (_, _)|Eqn (_, _)|Neg _|OrList _|Imply (_, _)|
+ForallFormula (_, _)|ExistFormula (_, _))
+File "src/invFinder.ml", line 316, characters 32-649:
+Warning 16: this optional argument cannot be erased.
+File "src/invFinder.ml", line 640, characters 9-19:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+(_, None)
+File "src/invFinder.ml", line 806, characters 4-25:
+Warning 6: labels were omitted in the application of this function.
+File "src/invFinder.ml", line 845, characters 24-67:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+Paramref _
+File "src/invFinder.ml", line 878, characters 45-53:
+Warning 48: implicit elimination of optional arguments ?pfs_rule, ?pfs_prop
+File "src/invFinder.ml", line 879, characters 43-51:
+Warning 48: implicit elimination of optional arguments ?pfs_rule, ?pfs_prop
+File "src/invFinder.ml", line 924, characters 10-29:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+AllRuleInst _
+File "src/invFinder.ml", line 950, characters 6-31:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+AllRuleInst _
+File "src/invFinder.ml", line 967, characters 11-46:
+Warning 48: implicit elimination of optional argument ?id
+File "src/invFinder.ml", line 1062, characters 14-39:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+AllRuleInst _
+File "src/invFinder.ml", line 1077, characters 22-43:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+(Chaos|Miracle|UIP (_, _)|Eqn (_, _)|Neg _|OrList _|Imply (_, _)|
+ForallFormula (_, _)|ExistFormula (_, _))
+File "src/invFinder.ml", line 1425, characters 4-18:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+None
+File "src/invFinder.ml", line 1433, characters 4-16:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+None
+File "src/invFinder.ml", line 114, characters 4-19:
+Warning 32: unused value rule_2_concrete.
+File "src/invFinder.ml", line 259, characters 8-9:
+Warning 27: unused variable f.
+File "src/invFinder.ml", line 259, characters 11-13:
+Warning 27: unused variable e1.
+File "src/invFinder.ml", line 259, characters 15-17:
+Warning 27: unused variable e2.
+File "src/invFinder.ml", line 312, characters 24-40:
+Warning 27: unused variable symIndex.
+File "src/invFinder.ml", line 380, characters 5-14:
+Warning 32: unused value print_all.
+File "src/invFinder.ml", line 382, characters 31-32:
+Warning 27: unused variable b.
+File "src/invFinder.ml", line 410, characters 11-15:
+Warning 27: unused variable cinv.
+File "src/invFinder.ml", line 458, characters 8-11:
+Warning 26: unused variable tmp.
+File "src/invFinder.ml", line 460, characters 21-24:
+Warning 26: unused variable tmp.
+File "src/invFinder.ml", line 473, characters 5-9:
+Warning 26: unused variable tmp1.
+File "src/invFinder.ml", line 475, characters 6-8:
+Warning 26: unused variable t1.
+File "src/invFinder.ml", line 476, characters 6-8:
+Warning 26: unused variable l2.
+File "src/invFinder.ml", line 604, characters 20-27:
+Warning 27: unused variable assigns.
+File "src/invFinder.ml", line 607, characters 21-29:
+Warning 27: unused variable must_new.
+File "src/invFinder.ml", line 611, characters 22-25:
+Warning 26: unused variable tmp.
+File "src/invFinder.ml", line 640, characters 9-10:
+Warning 27: unused variable b.
+File "src/invFinder.ml", line 641, characters 8-11:
+Warning 26: unused variable tmp.
+File "src/invFinder.ml", line 679, characters 21-28:
+Warning 27: unused variable assigns.
+File "src/invFinder.ml", line 718, characters 7-8:
+Warning 27: unused variable m.
+File "src/invFinder.ml", line 719, characters 10-11:
+Warning 27: unused variable n.
+File "src/invFinder.ml", line 737, characters 6-20:
+Warning 32: unused value gen_paramfixes.
+File "src/invFinder.ml", line 792, characters 6-9:
+Warning 32: unused value add.
+File "src/invFinder.ml", line 794, characters 6-18:
+Warning 32: unused value replace_many.
+File "src/invFinder.ml", line 912, characters 27-36:
+Warning 27: unused variable statement.
+File "src/invFinder.ml", line 933, characters 10-13:
+Warning 26: unused variable tmp.
+File "src/invFinder.ml", line 952, characters 19-20:
+Warning 26: unused variable f.
+File "src/invFinder.ml", line 952, characters 14-17:
+Warning 26: unused variable pds.
+File "src/invFinder.ml", line 985, characters 50-58:
+Warning 27: unused variable prop_pds.
+File "src/invFinder.ml", line 1250, characters 28-41:
+Warning 27: unused variable smv_bmc.
+File "src/invFinder.ml", line 1266, characters 88-90:
+Warning 27: unused variable pf.
+File "src/invFinder.ml", line 1266, characters 84-87:
+Warning 27: unused variable pds.
+File "src/invFinder.ml", line 1286, characters 8-10:
+Warning 26: unused variable ps.
+File "src/invFinder.ml", line 1296, characters 57-65:
+Warning 27: unused variable prop_pds.
+File "src/invFinder.ml", line 1409, characters 25-28:
+Warning 27: unused variable old.
+File "src/invFinder.ml", line 1417, characters 10-13:
+Warning 26: unused variable tmp.
+File "src/invFinder.ml", line 1422, characters 26-39:
+Warning 27: unused variable smv_bmc.
+File "src/invFinder.ml", line 1426, characters 4-8:
+Warning 26: unused variable tmp1.
+File "src/invFinder.ml", line 1482, characters 6-8:
+Warning 26: unused variable ps.
+# Target: src/client.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/client.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/client.ml > src/client.ml.depends # cached
+# Target: src/getModelString.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/getModelString.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/getModelString.ml > src/getModelString.ml.depends # cached
+# Target: src/smtLexer.mll, tags: { bin_annot, debug, extension:mll, file:src/smtLexer.mll, lexer, ocaml, ocamllex, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+/Users/sword/.opam/4.02.2/bin/ocamllex.opt -q src/smtLexer.mll # cached
+# Target: src/smtLexer.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/smtLexer.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/smtLexer.ml > src/smtLexer.ml.depends # cached
+# Target: src/smtRetparser.mly.depends, tags: { bin_annot, debug, extension:mly, file:src/smtRetparser.mly, infer, menhir_ocamldep, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' src/smtRetparser.mly > src/smtRetparser.mly.depends # cached
+# Target: src/smtRetparser.mly, tags: { bin_annot, byte, compile, debug, extension:ml, extension:mly, file:src/smtRetparser.ml, file:src/smtRetparser.mly, infer, menhir, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), parser, quiet, short_paths, syntax(camlp4o), thread }
+menhir --ocamlc 'ocamlfind ocamlc -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src' --infer src/smtRetparser.mly # cached
+# Target: src/smtRetparser.mli.depends, tags: { bin_annot, debug, extension:mli, file:src/smtRetparser.mli, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/smtRetparser.mli > src/smtRetparser.mli.depends # cached
+# Target: src/smtRetparser.cmi, tags: { bin_annot, byte, compile, debug, extension:mli, file:src/smtRetparser.mli, interf, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smtRetparser.cmi src/smtRetparser.mli # cached
+# Target: src/smtLexer.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/smtLexer.cmo, file:src/smtLexer.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smtLexer.cmo src/smtLexer.ml # cached
+# Target: src/getModelString.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/getModelString.cmo, file:src/getModelString.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/getModelString.cmo src/getModelString.ml # cached
+# Target: src/murphi.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/murphi.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/murphi.ml > src/murphi.ml.depends # cached
+# Target: src/smv.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/smv.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/smv.ml > src/smv.ml.depends # cached
+# Target: src/client.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/client.cmo, file:src/client.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/client.cmo src/client.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/client.cmo src/client.ml
+File "src/client.ml", line 468, characters 25-27:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+File "src/client.ml", line 482, characters 25-27:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+File "src/client.ml", line 592, characters 42-63:
+Warning 6: labels were omitted in the application of this function.
+File "src/client.ml", line 628, characters 35-54:
+Warning 6: labels were omitted in the application of this function.
+File "src/client.ml", line 632, characters 26-42:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+None
+File "src/client.ml", line 23, characters 5-11:
+Warning 26: unused variable result.
+File "src/client.ml", line 24, characters 5-8:
+Warning 26: unused variable tmp.
+File "src/client.ml", line 461, characters 16-24:
+Warning 32: unused value check_ce.
+File "src/client.ml", line 475, characters 16-30:
+Warning 32: unused value check_stand_ce.
+File "src/client.ml", line 502, characters 14-28:
+Warning 32: unused value minify_inv_inc.
+File "src/client.ml", line 574, characters 18-34:
+Warning 32: unused value trySimpleSymList.
+File "src/client.ml", line 586, characters 22-25:
+Warning 27: unused variable prs.
+File "src/client.ml", line 595, characters 14-29:
+Warning 32: unused value minify_inv_desc.
+File "src/client.ml", line 618, characters 23-27:
+Warning 27: unused variable name.
+File "src/client.ml", line 633, characters 26-29:
+Warning 26: unused variable tmp.
+File "src/client.ml", line 687, characters 25-27:
+Warning 27: unused variable rs.
+# Target: src/murphi.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/murphi.cmo, file:src/murphi.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/murphi.cmo src/murphi.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/murphi.cmo src/murphi.ml
+File "src/murphi.ml", line 24, characters 11-24:
+Warning 27: unused variable quiet.
+# Target: src/smv.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/smv.cmo, file:src/smv.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smv.cmo src/smv.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smv.cmo src/smv.ml
+File "src/smv.ml", line 35, characters 11-24:
+Warning 27: unused variable quiet.
+# Target: src/generalize.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/generalize.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/generalize.ml > src/generalize.ml.depends # cached
+# Target: src/generalize.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/generalize.cmo, file:src/generalize.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/generalize.cmo src/generalize.ml # cached
+# Target: src/toStr.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/toStr.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/toStr.ml > src/toStr.ml.depends # cached
+# Target: src/toStr.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/toStr.cmo, file:src/toStr.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/toStr.cmo src/toStr.ml # cached
+# Target: src/smtRetparser.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/smtRetparser.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/smtRetparser.ml > src/smtRetparser.ml.depends # cached
+# Target: src/smtRetparser.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/smtRetparser.cmo, file:src/smtRetparser.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smtRetparser.cmo src/smtRetparser.ml # cached
+# Target: src/smt.ml.depends, tags: { bin_annot, debug, extension:ml, file:src/smt.ml, ocaml, ocamldep, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamldep -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -modules src/smt.ml > src/smt.ml.depends # cached
+# Target: src/smt.cmo, tags: { bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:src/smt.cmo, file:src/smt.ml, implem, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smt.cmo src/smt.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core -I src -o src/smt.cmo src/smt.ml
+File "src/smt.ml", line 25, characters 19-32:
+Warning 27: unused variable quiet.
+# Target: mutualEx.byte, tags: { bin_annot, byte, debug, dont_link_with, extension:byte, file:mutualEx.byte, link, ocaml, package(bin_prot.syntax), package(core), package(sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax), package(str,re2), program, quiet, short_paths, syntax(camlp4o), thread }
+ocamlfind ocamlc -linkpkg -g -thread -syntax camlp4o -package str,re2 -package bin_prot.syntax -package sexplib.syntax,comparelib.syntax,fieldslib.syntax,variantslib.syntax -package core src/utils.cmo src/paramecium.cmo src/toStr.cmo src/generalize.cmo src/smtRetparser.cmo src/smtLexer.cmo src/getModelString.cmo src/client.cmo src/murphi.cmo src/smv.cmo src/cmdline.cmo src/smt.cmo src/formula.cmo src/loach.cmo src/invFinder.cmo mutualEx.cmo -o mutualEx.byte
+# Compilation successful.

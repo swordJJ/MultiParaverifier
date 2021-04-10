@@ -1,0 +1,39 @@
+### Starting build.
+Backtrace:
+                      - Failed to build the target mutualEx.byte
+                          - Failed to build all of these:
+                              - Building src/mutualEx.byte:
+                                  - Building src/mutualEx.cmo:
+                                      - Failed to build all of these:
+                                          - Building src/mutualEx.ml:
+                                              - Failed to build all of these:
+                                                  - Building src/mutualEx.mly
+                                                  - Building src/mutualEx.mlypack
+                                                  - Building src/mutualEx.mll
+                                          - Building src/mutualEx.mli:
+                                              - Failed to build all of these:
+                                                  - Building src/mutualEx.mly
+                                                  - Building src/mutualEx.mlypack
+                                          - Building src/mutualEx.mlpack
+                                          - Building src/mutualEx.mli:
+                                              - Failed to build all of these:
+                                                  - Building src/mutualEx.mly
+                                                  - Building src/mutualEx.mlypack
+                              - Building mutualEx.byte:
+                                  - Building mutualEx.cmo:
+                                      - Failed to build all of these:
+                                          - Building mutualEx.ml:
+                                              - Failed to build all of these:
+                                                  - Building mutualEx.mly
+                                                  - Building mutualEx.mlypack
+                                                  - Building mutualEx.mll
+                                          - Building mutualEx.mli:
+                                              - Failed to build all of these:
+                                                  - Building mutualEx.mly
+                                                  - Building mutualEx.mlypack
+                                          - Building mutualEx.mlpack
+                                          - Building mutualEx.mli:
+                                              - Failed to build all of these:
+                                                  - Building mutualEx.mly
+                                                  - Building mutualEx.mlypack
+# Compilation unsuccessful.

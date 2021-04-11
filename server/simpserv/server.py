@@ -6,7 +6,7 @@ def echo(conn, addr):
     data = ''
     try:
         data += conn.recv(1024)
-    except socket.timeout, e:
+    except socket.timeout:
         pass
     conn.sendall(data)
     conn.close()

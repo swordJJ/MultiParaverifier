@@ -1,0 +1,10 @@
+a[1] = E
+a[1] = M
+a[1] = I
+a[1] = OSTATUS
+a[1] = S
+a[2] = E
+a[2] = M
+a[2] = I
+a[2] = OSTATUS
+a[2] = S

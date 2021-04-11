@@ -7,5 +7,5 @@ This package is for checking invariant with NuSMV in subprocess
 @author Kaiqiang Duan <duankq@ios.ac.cn>
 """
 
-from smv import SMV
+from .smv import SMV
 

@@ -6,10 +6,14 @@ from simpserv import start_server
 from smvserv import SMV
 from z3serv import SMT2
 from muserv import Murphi
-
+import assoserv
 from settings import MAX_SLEEP_TIME, TIME_OUT, SMV_PATH, SMV_FILE_DIR, HOST, PORT
 from settings import MU_PATH, MU_INCLUDE, GXX_PATH, MU_FILE_DIR, MU_CHECK_TIMEOUT, MU_CHECK_MEMORY
+import subprocess
+from subprocess import PIPE
+import hashlib
 
+from pexpect import spawn, EOF, TIMEOUT
 SPLIT_CHAR=','
 ERROR = '-2'
 WAITING = '-1'
@@ -44,6 +48,10 @@ mu_pool = {}
 
 __verbose = False
 
+def base(cmd):
+    if subprocess.call(cmd, shell=True):
+        raise Exception("{} fail".format(cmd))
+
 def gen_smv_file(name, content, name_add=""):
     smv_file = SMV_FILE_DIR + hashlib.md5(name).hexdigest() + name_add + '.smv'
     new_smv_file = True
@@ -70,7 +78,7 @@ def gen_smv_process(name, content, ord_str, name_add=""):
             with open(ord_file, 'w') as f:
                 f.write(ord_str)
         smv_pool[name] = smv_file
-        if __verbose: print "Start to compute reachable set"
+        if __verbose: print("Start to compute reachable set")
         smv = SMV(SMV_PATH, smv_file, ord_file, timeout=TIME_OUT)
         smv_process_pool[smv_file] = smv
         smv.go_and_compute_reachable()
@@ -88,7 +96,7 @@ def serv(conn, addr):
                 data += SPLIT_CHAR.join(d[1:])
             else:
                 data += d
-        except socket.timeout, e:
+        except socket.timeout:
             pass
     cmd = data.split(SPLIT_CHAR)
     res = None
@@ -143,7 +151,7 @@ def serv(conn, addr):
         content = SPLIT_CHAR.join(cmd[3:])
         new_smv_file, smv_file = gen_smv_file(name, content, name_add='.bmc')
         if new_smv_file or name not in smv_bmc_pool:
-            if __verbose: print "Go to bmc checking of NuSMV"
+            if __verbose: print("Go to bmc checking of NuSMV")
             smv = SMV(SMV_PATH, smv_file, timeout=TIME_OUT)
             if name in smv_bmc_pool: smv_bmc_pool[name].exit()
             smv_bmc_pool[name] = smv
@@ -224,10 +232,14 @@ def serv(conn, addr):
             conn.sendall(SPLIT_CHAR.join([OK, res]))
         else:
             conn.sendall(ERROR)
-
-
+    elif cmd[0] == CHECK_INV_BY_ASSOCIATE_RULE:
+        """
+        In this case, cmd should be [length, command, command_id, name, inv]
+        """
+        base('python3 assoserv/assoc.py -p ../examples/asso/%s' % (cmd[2]))
+        conn.sendall(OK)
     conn.close()
-    if __verbose: print ': ', res
+    if __verbose: print(': ', res)
 
 
 
@@ -235,7 +247,7 @@ def serv(conn, addr):
 if '-v' in sys.argv or '--verbose' in sys.argv:
     __verbose = True
 if '-h' in sys.argv or '--help' in sys.argv:
-    print """Usage: [-v|-h] to [--verbose|--help]"""
+    print("""Usage: [-v|-h] to [--verbose|--help]""")
 
 if __name__ == '__main__':
     print(MU_PATH)

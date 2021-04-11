@@ -454,7 +454,6 @@ let minify_inv_desc inv =
       let fs=if (!symmetry_method_switch) then 
     			    form2AllSymForm ~f:(neg (andList necessary)) ~types:(!type_defs)
     			  else [(neg (andList necessary))] in 
-			let ()=print_endline "forall sym formulas" in
 			let  tmp=List.map ~f:(fun f->print_endline (ToStr.Smv.form_act f)) fs in
     	if 	(trySimpleSymList 	fs) then   necessary 
       else begin let tmp=List.map ~f:(fun x->print_endline (ToStr.Smv.form_act ~lower:false x)) necessary in raise Empty_exception end
@@ -633,53 +632,18 @@ module Choose = struct
       [tautology inv]
     else begin
       try
-			 	
 				let tab=ToStr.Variable.genVarName2VarMap inv in
-				let ()=print_endline ("genTable "^(ToStr.Smv.form_act inv)^"finished") in 
-				let ()=print_endline ("gen "^(ToStr.Another1Smt2.form_of inv)^"finished") in
 				let (b,Some(ce))=Smt.chkWithCe (ToStr.Another1Smt2.form_of inv) tab in	
 				let tmp=List.map ~f:(fun x->print_endline (ToStr.Smv.form_act x)) ce in
-				 let ()=print_endline "will minify\n" in			 
         let invs = List.map ~f:(fun x ->let x=(*minify_inv_inc*)minify_inv_desc x in 
 				let x=chkImpliedOrNew must_new x (*in let tmp=read_line ()*) in x) ce in 
-				 
-				(* let tmp=List.map ~f:(fun x->print_endline (ToStr.Smv.form_act x)) invs in
-				let ()=print_endline (sprintf "result's length:%d" (List.length invs)) in
-				let ()=print_endline "-------\n" in*) invs
-				(*let tmp=read_line () in *)
-				(* List.map ~f:(chkImpliedOrNew must_new) invs  *)
-			(*	let ()=print_endline (let [inv]=invs in ("genTable "^(ToStr.Smv.form_act inv))) in*)
-			(*	let ()=print_endline (sprintf "length:%d" (List.length invs)) in*)
-        (* Because invs are in form of negation, so inv -> old means neg old -> neg inv *)
-				(*let ()=print_endline "-------------------------" in
-				let tmp=List.map ~f:(fun x->print_endline (ToStr.Smv.form_act x)) invs in
-				let tmp=read_line () in
-				let inv=if List.length invs=1 then let [inv0]=invs in inv0 
-								else orList invs in*)
-        (*let implied_by_olds = List.map (fun x->InvLib.any_can_be_implied_by x ~symIndex:(!symmetry_index_switch)) invs in*)
-				(*let implied_by_old = InvLib.any_can_be_implied_by inv ~symIndex:(!symmetry_index_switch) in
-        match implied_by_old with
-        | Some(old) -> implied old
-        | None ->
-          let normalized = normalize inv ~types:(!type_defs) in
-          let f=  if (!symmetry_method_switch) then 
-    			   andList (form2AllSymForm ~f:(neg normalized) ~types:(!type_defs))
-    			  else (neg normalized)   in
-          	begin
-          	if must_new || Smv.is_inv (ToStr.Smv.form_act f) then
-           		 new_inv inv
-          	else begin
-            		not_inv
-          			end
-						end*)
+        invs
       with
       | _ -> (print_endline ("catch not_inv error:"^(ToStr.Smv.form_act inv));[not_inv])
     end
 
 	let chooseCe guards assigns cons =
     check_levelCe ~must_new:true ((*simplify*) (andList (cons::guards)))
-
-
 end
 
 
@@ -1402,7 +1366,7 @@ let rec anotherTabular_rules_cinvs rname_paraminfo_pairs cinvs relations =
   	anotherTabular_rules_cinvs rname_paraminfo_pairs cinvs relations
   
     let getCe  inv = 
-      let level = Choose.chooseCe [] [] ( inv) in
+      let level = Choose.chooseCe [] [] (inv) in
       let chk oneCe=
         match oneCe with
         | Choose.Tautology(_) -> []
@@ -1413,81 +1377,64 @@ let rec anotherTabular_rules_cinvs rname_paraminfo_pairs cinvs relations =
           raise Empty_exception  in
         
       let all=List.concat (List.map ~f:(chk) level) in
-      let ()=print_endline "------------------wait\n" in
       let tmp=List.map ~f:(fun x -> print_endline (ToStr.Smv.form_act x)) all in 
-      let ()=print_endline "------------------wait\n" in  
-      
       all
-  let anotherFind ?(insym_types=[]) ?(smv_escape=(fun inv_str -> inv_str))
-  ?(smv="") ?(smv_ord="") ?(smv_bmc="") ?(murphi="") ?(symMethod=false) ?(symIndex=true) protocol =
-let {name; types; vardefs; init; rules; properties} = Loach.Trans.act ~loach:protocol in
-let properties1=List.tl properties in
-let Some(invProps)=properties1 in
-let tmp1=
-Client.type_defs:=types;
-Client.symmetry_method_switch := symMethod;
-Client.initVardefTbl vardefs in
-let _smt_context = Smt.set_context name (ToStr.Another1Smt2.context_of ~insym_types ~types ~vardefs ~properties:invProps)(*invProps*) in
-let ()=	print_endline ("set smt context!"^(ToStr.Another1Smt2.context_of ~insym_types ~types ~vardefs ~properties:invProps))
-   in
-let Some(ddProp)=List.hd properties in
-let properties=[ddProp] in 
-let _mu_context = Murphi.set_context name murphi in
-let ()=	print_endline "set mu context!" in
-let _smv_context =
-  (*if List.is_empty cinvs then 0
-  else*) begin
-    if smv = "" then
-      Smv.set_context ~escape:smv_escape name (Loach.ToSmv.protocol_act protocol) ~smv_ord
-    else begin Smv.set_context ~escape:smv_escape name smv ~smv_ord end
-  end
-in
 
-print_endline "set all context!";
-type_defs := types;
-protocol_name := name;
-symmetry_method_switch := symMethod;
-symmetry_index_switch :=symIndex;
-cache_vars_of_rules rules;
-
-let init_cinvs =
-  let invs =
-    List.concat (List.map properties ~f:simplify_prop)
-    |> List.map ~f:(normalize ~types:(!type_defs))
-     |> List.map ~f:(fun x ->let ()=print_endline ("x="^(ToStr.Smv.form_act x)) in getCe x)
-    |>List.concat   
-  in
-  let indice = up_to (List.length invs) in
-  List.map2_exn invs indice ~f:(fun f id -> form_2_concreate_prop ~id:(id + 1) f)
-in
-
-let cinvs, relations = read_res_cache init_cinvs in
-Prt.warning ("initial invs:\n"^String.concat ~sep:"\n" (
-  List.map cinvs ~f:(fun cinv -> ToStr.Smv.form_act (concrete_prop_2_form cinv))
-));
-(*let _smv_context =
-  if List.is_empty cinvs then 0
-  else begin
-    if smv = "" then
-      Smv.set_context ~escape:smv_escape name (Loach.ToSmv.protocol_act protocol) ~smv_ord
-    else begin Smv.set_context ~escape:smv_escape name smv ~smv_ord end
-  end*)
-let ()=print_endline "stop1"  (*in let tmp=read_line ()   *)
-in
-let ()=InvLib.flush ()in 
-let ()=print_endline "enter here1" in
-let get_rulename_param_pair r =
-  let() = Prt.info ("get_rulename_param_pair invoke") in 
-  let Paramecium.Rule(rname, paramdefs, _, _) = r in
-  let ps = cart_product_with_paramfix paramdefs (!type_defs) in
-  Hashtbl.replace raw_rule_table ~key:rname ~data:r;
-  (rname, paramdefs)
-in
-let rname_paraminfo_pairs = List.map rules ~f:get_rulename_param_pair in
-
-let (cinvs, relations) = anotherTabular_rules_cinvs rname_paraminfo_pairs cinvs relations in
-(*let ()=print_endline "finish anotherTabular" in*) 
-let cinvs_with_inits = check_invs_on_init cinvs init in
-
-let ()=printf "invs:=%s\n" (result_to_str (cinvs, List.concat (List.concat (List.concat (relations))))) in
-(cinvs_with_inits, relations)
+  let anotherFind ?(insym_types=[]) ?(smv_escape=(fun inv_str -> inv_str)) ?(smv="") ?(smv_ord="") ?(smv_bmc="") ?(murphi="") ?(asso="") ?(symMethod=false) ?(symIndex=true) protocol =
+    let {name; types; vardefs; init; rules; properties} = Loach.Trans.act ~loach:protocol in
+    let properties1=List.tl properties in
+    let Some(invProps)=properties1 in
+    let tmp1=
+    Client.type_defs:=types;
+    Client.symmetry_method_switch := symMethod;
+    Client.initVardefTbl vardefs in
+    let ()=	print_endline ("======set smt context=====\n") in
+    let _smt_context = Smt.set_context name (ToStr.Another1Smt2.context_of ~insym_types ~types ~vardefs ~properties:invProps)(*invProps*) in
+      (* (ToStr.Another1Smt2.context_of ~insym_types ~types ~vardefs ~properties:invProps)) *)
+      (* in *)
+    let Some(ddProp)=List.hd properties in
+    let properties=[ddProp] in 
+    let ()=	print_endline "=====set mu context=====\n" in
+    let _mu_context = Murphi.set_context name murphi in
+    let ()= print_endline "=====set smv context=====\n" in 
+    let _smv_context =
+     begin
+        if smv = "" then
+          Smv.set_context ~escape:smv_escape ~smv_ord name (Loach.ToSmv.protocol_act protocol) 
+        else begin Smv.set_context ~escape:smv_escape ~smv_ord name smv  end
+      end
+    in
+    let () = print_endline "=====set assoc context=====\n" in 
+    let _assoc_context = Asso.set_context name asso in 
+    let () = Prt.info ("===== context set end=====\n") in 
+    type_defs := types;
+    protocol_name := name;
+    symmetry_method_switch := symMethod;
+    symmetry_index_switch :=symIndex;
+    cache_vars_of_rules rules;
+    let init_cinvs =
+      let invs =
+        List.concat (List.map properties ~f:simplify_prop)
+        |> List.map ~f:(normalize ~types:(!type_defs))
+        |> List.map ~f:(fun x ->let ()=print_endline ("x="^(ToStr.Smv.form_act x)) in getCe x)
+        |> List.concat   
+      in
+      let indice = up_to (List.length invs) in
+      List.map2_exn invs indice ~f:(fun f id -> form_2_concreate_prop ~id:(id + 1) f)
+    in
+    let cinvs, relations = read_res_cache init_cinvs in
+    Prt.warning ("initial invs:\n"^String.concat ~sep:"\n" (
+      List.map cinvs ~f:(fun cinv -> ToStr.Smv.form_act (concrete_prop_2_form cinv))
+    ));
+    let ()=InvLib.flush ()in 
+    let get_rulename_param_pair r =
+      let Paramecium.Rule(rname, paramdefs, _, _) = r in
+      let ps = cart_product_with_paramfix paramdefs (!type_defs) in
+      Hashtbl.replace raw_rule_table ~key:rname ~data:r;
+      (rname, paramdefs)
+    in
+    let rname_paraminfo_pairs = List.map rules ~f:get_rulename_param_pair in
+    let (cinvs, relations) = anotherTabular_rules_cinvs rname_paraminfo_pairs cinvs relations in
+    let cinvs_with_inits = check_invs_on_init cinvs init in
+    let ()=printf "invs:\n%s\n" (result_to_str (cinvs, List.concat (List.concat (List.concat (relations))))) in
+    (cinvs_with_inits, relations)

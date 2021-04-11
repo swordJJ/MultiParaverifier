@@ -81,8 +81,7 @@ let protocol = {
 
 let () = run_with_cmdline (fun () ->
   let protocol = preprocess_rule_guard ~loach:protocol in
-  let cinvs_with_varnames, relations = find ~murphi:(In_channel.read_all "n_mutualEx.m") protocol in
-  (* let ()=print_endline(Dafny1.protocol_act' protocol cinvs_with_varnames relations) in *)
+  let cinvs_with_varnames, relations = anotherFind ~murphi:(In_channel.read_all "n_mutualEx.m") protocol in
   ()
   )
   

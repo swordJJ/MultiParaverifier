@@ -86,10 +86,10 @@ class SMV(object):
 
 if __name__ == '__main__':
     smv = SMV('/home/duan/Downloads/NuSMV/bin/NuSMV', 'mutualEx.smv')
-    print smv.process.before
-    print smv.go_and_compute_reachable()
-    print smv.check('af')
-    print smv.check('n[1] = i')
-    print smv.check('n[1] = c -> n[2] != c')
-    print smv.exit()
+    print(smv.process.before)
+    print(smv.go_and_compute_reachable())
+    print(smv.check('af'))
+    print(smv.check('n[1] = i'))
+    print(smv.check('n[1] = c -> n[2] != c'))
+    print(smv.exit())
 

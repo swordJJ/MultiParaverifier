@@ -1,0 +1,297 @@
+MODULE main
+VAR
+a[1] : {m, ostatus, e, s, i};
+a[2] : {m, ostatus, e, s, i};
+a[3] : {m, ostatus, e, s, i};
+
+--------------------
+
+n_rule_t1__1 : process Proc__n_rule_t1__1(a[1]);
+
+n_rule_t1__2 : process Proc__n_rule_t1__2(a[2]);
+
+n_rule_t1__3 : process Proc__n_rule_t1__3(a[3]);
+
+n_rule_t2__1 : process Proc__n_rule_t2__1(a[1], a[2], a[3]);
+
+n_rule_t2__2 : process Proc__n_rule_t2__2(a[1], a[2], a[3]);
+
+n_rule_t2__3 : process Proc__n_rule_t2__3(a[1], a[2], a[3]);
+
+n_rul_t3__1 : process Proc__n_rul_t3__1(a[1], a[2], a[3]);
+
+n_rul_t3__2 : process Proc__n_rul_t3__2(a[1], a[2], a[3]);
+
+n_rul_t3__3 : process Proc__n_rul_t3__3(a[1], a[2], a[3]);
+
+n_rul_t4__1 : process Proc__n_rul_t4__1(a[1], a[2], a[3]);
+
+n_rul_t4__2 : process Proc__n_rul_t4__2(a[1], a[2], a[3]);
+
+n_rul_t4__3 : process Proc__n_rul_t4__3(a[1], a[2], a[3]);
+
+n_rul_t5__1 : process Proc__n_rul_t5__1(a[1], a[2], a[3]);
+
+n_rul_t5__2 : process Proc__n_rul_t5__2(a[1], a[2], a[3]);
+
+n_rul_t5__3 : process Proc__n_rul_t5__3(a[1], a[2], a[3]);
+
+--------------------
+
+ASSIGN
+init(a[1]) := case
+TRUE : i;
+esac;
+init(a[2]) := case
+TRUE : i;
+esac;
+init(a[3]) := case
+TRUE : i;
+esac;
+
+--------------------
+
+
+
+--------------------
+
+MODULE Proc__n_rule_t1__1(a__1)
+ASSIGN
+next(a__1) := case
+(a__1 = e) : m;
+TRUE : a__1;
+esac;
+
+---------
+
+MODULE Proc__n_rule_t1__2(a__2)
+ASSIGN
+next(a__2) := case
+(a__2 = e) : m;
+TRUE : a__2;
+esac;
+
+---------
+
+MODULE Proc__n_rule_t1__3(a__3)
+ASSIGN
+next(a__3) := case
+(a__3 = e) : m;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rule_t2__1(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__1 = i) : s;
+TRUE : a__1;
+esac;
+next(a__2) := case
+((!(a__2 = m)) & (!(a__2 = e)) & (a__1 = i)) : a__2;
+((a__2 = m) & (!(a__2 = e)) & (a__1 = i)) : ostatus;
+((a__2 = e) & (a__1 = i)) : s;
+TRUE : a__2;
+esac;
+next(a__3) := case
+((!(a__3 = m)) & (!(a__3 = e)) & (a__1 = i)) : a__3;
+((a__3 = m) & (!(a__3 = e)) & (a__1 = i)) : ostatus;
+((a__3 = e) & (a__1 = i)) : s;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rule_t2__2(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+((!(a__1 = m)) & (!(a__1 = e)) & (a__2 = i)) : a__1;
+((a__1 = m) & (!(a__1 = e)) & (a__2 = i)) : ostatus;
+((a__1 = e) & (a__2 = i)) : s;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__2 = i) : s;
+TRUE : a__2;
+esac;
+next(a__3) := case
+((!(a__3 = m)) & (!(a__3 = e)) & (a__2 = i)) : a__3;
+((a__3 = m) & (!(a__3 = e)) & (a__2 = i)) : ostatus;
+((a__3 = e) & (a__2 = i)) : s;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rule_t2__3(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+((!(a__1 = m)) & (!(a__1 = e)) & (a__3 = i)) : a__1;
+((a__1 = m) & (!(a__1 = e)) & (a__3 = i)) : ostatus;
+((a__1 = e) & (a__3 = i)) : s;
+TRUE : a__1;
+esac;
+next(a__2) := case
+((!(a__2 = m)) & (!(a__2 = e)) & (a__3 = i)) : a__2;
+((a__2 = m) & (!(a__2 = e)) & (a__3 = i)) : ostatus;
+((a__2 = e) & (a__3 = i)) : s;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__3 = i) : s;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t3__1(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__1 = s) : e;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__1 = s) : i;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__1 = s) : i;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t3__2(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__2 = s) : i;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__2 = s) : e;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__2 = s) : i;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t3__3(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__3 = s) : i;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__3 = s) : i;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__3 = s) : e;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t4__1(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__1 = ostatus) : e;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__1 = ostatus) : i;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__1 = ostatus) : i;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t4__2(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__2 = ostatus) : i;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__2 = ostatus) : e;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__2 = ostatus) : i;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t4__3(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__3 = ostatus) : i;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__3 = ostatus) : i;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__3 = ostatus) : e;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t5__1(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__1 = i) : e;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__1 = i) : i;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__1 = i) : i;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t5__2(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__2 = i) : i;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__2 = i) : e;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__2 = i) : i;
+TRUE : a__3;
+esac;
+
+---------
+
+MODULE Proc__n_rul_t5__3(a__1, a__2, a__3)
+ASSIGN
+next(a__1) := case
+(a__3 = i) : i;
+TRUE : a__1;
+esac;
+next(a__2) := case
+(a__3 = i) : i;
+TRUE : a__2;
+esac;
+next(a__3) := case
+(a__3 = i) : e;
+TRUE : a__3;
+esac;

@@ -96,7 +96,7 @@ val anotherFind :
   ?insym_types:string list ->
   ?smv_escape:(string -> string) ->
   ?smv:string -> ?smv_ord:string ->
-  ?smv_bmc:string -> ?murphi:string -> 
+  ?smv_bmc:string -> ?murphi:string -> ?asso:string ->
   ?symMethod:bool ->
   ?symIndex:bool ->
   Loach.protocol ->

@@ -19,7 +19,7 @@ class SMT2(object):
         print(((context if context else self.context) + smt2_formula))        
         s.add(parse_smt2_string((context if context else self.context) + smt2_formula))
         if str(s.check())=="sat":        	
-        	print((SPLIT_CHAR.join([str(s.check()), str(s.model())])))   #print(s.model()) 
+        	print((SPLIT_CHAR.join([str(s.check()), str(s.model())])))    
         	return (SPLIT_CHAR.join([str(s.check()), str(s.model())]))
         return str(s.check())
         	

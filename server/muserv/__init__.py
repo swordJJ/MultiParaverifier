@@ -1,2 +1,2 @@
 
-from murphi import Murphi
+from .murphi import Murphi

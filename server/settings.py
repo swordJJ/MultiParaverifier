@@ -7,19 +7,19 @@ PORT = 50008
 MAX_SLEEP_TIME = 5
 
 # time out in seconds
-TIME_OUT = 5
+TIME_OUT = 10
 MU_CHECK_TIMEOUT = 600
 MU_CHECK_MEMORY = 1024
 
 # path to NuSMV
 SMV_PATH = '/Users/sword/Documents/NuSMV-2.6.0/bin/NuSMV'
-MU_PATH = '/Users/sword/Documents/cmurphi5.4.9/src/mu'
-MU_INCLUDE = '/Users/sword/Documents/cmurphi5.4.9/include'
+MU_PATH = '/Users/sword/Downloads/cmurphi5.4.9.1/src/mu'
+MU_INCLUDE = '/Users/sword/Downloads/cmurphi5.4.9.1/include'
 GXX_PATH = '/usr/bin/g++'
 
 # path for storing smv files
-SMV_FILE_DIR = '/Users/sword/Documents/Paraverif/tmp/NuSMV2/'
-MU_FILE_DIR = '/Users/sword/Documents/Paraverif/tmp/cmurphi2/'
+SMV_FILE_DIR = '/Users/sword/Documents/GitHub/paraverif_dafny/tmp/NuSMV2/'
+MU_FILE_DIR = '/Users/sword/Documents/GitHub/paraverif_dafny/tmp/cmurphi2/'
 
 
 

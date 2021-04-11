@@ -1,14 +1,9 @@
 (** Translate Paramecium to string of other languages
 *)
-
 open Utils
 open Paramecium
-
 open Core.Std
-
-
 (*----------------------------- Module To Debug String ----------------------------------*)
-
 (** Translate to Debug string *)
 module Debug = struct
 
@@ -260,16 +255,7 @@ module Smt2 = struct
     sprintf "(assert %s)" (form_act form)
 
 end
-
-
-
-
-
-
-
-
 (*----------------------------- Module To SMV String ----------------------------------*)
-
 (** Translate to smv string *)
 module Smv = struct
   let strc_to_lower = ref true
@@ -377,17 +363,6 @@ module Smv = struct
         |> String.concat ~sep:"\n"
       end
 
-  (*let rec init_act s =
-    match s with
-    | Assign(v, e) ->
-      let var_str = var_act v in
-      let exp_str = exp_act e in
-      sprintf "init(%s) := %s;" var_str exp_str
-    | Parallel(ss) ->
-      if ss = [] then "" else begin
-        List.map ss ~f:init_act
-        |> String.concat ~sep:"\n"
-      end*)
   let init_act s = statement_act ~is_init:true s "TRUE"
 
   let rule_act r =
@@ -435,9 +410,7 @@ module Smv = struct
     sprintf "%s\n\n--------------------\n\n%s" main_module rule_procs_str
 
 end
-
 (*********************************** Module Variables **************************************)
-
 (** Get variable names in the components *)
 module Variable = struct
   
@@ -489,10 +462,7 @@ module Variable = struct
 		List.fold ~f:(fun () v ->addOneVar2Tab v) vars ~init:(); dict
 		
 end
-
-
 (*----------------------------- Another Module To SMT String ----------------------------------*)
-
 (** Translate to smt2 string *)
 module Another1Smt2 = struct
 
@@ -598,34 +568,7 @@ module Another1Smt2 = struct
           |[] ->  sprintf "(%s %s)" name (String.concat ~sep:" " actual_ps)
           |_ -> sprintf "(select %s %s)" name (String.concat ~sep:" " actual_ps)
       end
-  
-  (*let paramref_act pr =
-    match pr with
-    | Paramfix(_, _, c) -> const_act c
-    | Paramref(name) -> name  
-    
-    let rec wrap ls str=
-      match ls with
-      |[] ->str 
-      |x::ls0-> 
-        let (n,prs)=x in
-         match prs with
-        | [] -> let str0= if (str="") then n else sprintf "(%s %s)" n str    in
-                 wrap ls0 str0
-         (* match ls0 with |[]-> n |_ ->*)
-         | _ ->
-        let actual_ps = List.map prs ~f:paramref_act in
-        (*(select s1 0 0)*)
-        let str0=if (str="") then sprintf "(select %s %s %s)" n str  (String.concat (List.map actual_ps ~f:(fun p -> sprintf " %s " p))) 
-                else sprintf "(select (%s %s) %s)" n str  (String.concat (List.map actual_ps ~f:(fun p -> sprintf " %s " p)))  in
-        wrap ls0 str0
-     
-        
-        
-    let var_act v =
-    let Arr(ls) = v in
-    wrap ls ""*)
-  
+
   
     (* Translate an exp to smt2 exp *)
     let rec exp_act exp =
@@ -697,9 +640,7 @@ module Another1Smt2 = struct
         |> List.concat
         |> List.map ~f:(vardef_act ~types)
         |> String.concat ~sep:"\n"
-      in
-     (*let ()=printf "%s%s" type_str vardef_str in*)
-  
+      in  
       let prop_str =
           List.map  properties 
             ~f:(fun p -> let Prop(n,pds,pf) =p in 
@@ -724,9 +665,6 @@ module Another1Smt2 = struct
     let vars=Variable.of_form f in
     let varMaps=Variable.genVarName2VarMap f in
     let varNames =Core.Std.Hashtbl.keys  varDefTab in
-    
-  
-    
     let tm1=if (!printvarNames=0 ) && (List.length vars >0) then 
               let ()=printvarNames:=1 in 
                   List.map ~f:(fun x -> 
@@ -767,9 +705,7 @@ module Another1Smt2 = struct
   let form_of form =
       String.concat ~sep:"\n" 
       [sprintf "(assert %s)" (form_act form) ; genConsConstr form]
-  
-  
-  end
+end
   
   
   

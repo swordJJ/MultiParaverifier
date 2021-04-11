@@ -75,12 +75,12 @@ if __name__ == '__main__':
     with open('mutualEx.m', 'r') as f:
         ctx = f.read()
     mu = Murphi('mutualEx',
-        '/home/duan/Downloads/cmurphi5.4.9/src/mu',
-        '/home/duan/Downloads/cmurphi5.4.9/include',
+        '/Users/sword/Downloads/cmurphi5.4.9.1/src/mu',
+        '/Users/sword/Downloads/cmurphi5.4.9.1/include',
         '/usr/bin/g++',
-        '/tmp/cmurphi/',
+        '/Users/sword/Documents/GitHub/paraverif_dafny/tmp',
         ctx,
         memory=1024,
     )
-    print mu.check('!(n[1] = C & n[2] = C)')
+    print(mu.check('!(n[1] = C & n[2] = C)'))
 

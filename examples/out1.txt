@@ -1,0 +1,788 @@
+[38;5;3m119,4,0,n_mutualEx,(declare-datatypes () ((state I T C E)))
+(declare-const n  (Array  Int  state))
+(declare-fun x () Bool)
+[0m
+======set smt context=====
+(declare-datatypes () ((state I T C E)))
+(declare-const n  (Array  Int  state))
+(declare-fun x () Bool)
+
+=====set mu context=====
+
+[38;5;3m667,8,1,n_mutualEx,const clientNUMS : 5;
+type state : enum{I, T, C, E};
+
+     client: 1..clientNUMS;
+
+var n : array [client] of state;
+
+    x : boolean; 
+    
+ruleset i : client do
+rule "Try" n[i] = I ==> begin
+      n[i] := T;endrule; 
+
+rule "Crit"
+      n[i] = T& x = true ==>begin
+      n[i] := C; x := false; endrule;
+
+rule "Exit"
+      n[i] = C ==>begin
+      n[i] := E;endrule;
+      
+ 
+rule "Idle"
+      n[i] = E ==> begin n[i] := I;
+      x := true;endrule;
+endruleset;
+
+startstate
+begin
+ for i: client do
+    n[i] := I; 
+  endfor;
+  x := true;
+endstartstate;
+
+ruleset i:client; j: client do
+invariant "coherence"
+  i != j -> (n[i] = C -> n[j] != C);
+endruleset;
+[0m
+=====set smv context=====
+
+[38;5;3m41,5,2,n_mutualEx,(assert (not (= (n 1) I)))[0m
+[38;5;3m35,5,3,n_mutualEx,(assert (= (n 1) I))[0m
+[38;5;3m41,5,4,n_mutualEx,(assert (not (= (n 2) I)))[0m
+[38;5;3m35,5,5,n_mutualEx,(assert (= (n 2) I))[0m
+[38;5;3m41,5,6,n_mutualEx,(assert (not (= (n 3) I)))[0m
+[38;5;3m35,5,7,n_mutualEx,(assert (= (n 3) I))[0m
+[38;5;3m41,5,8,n_mutualEx,(assert (not (= (n 4) I)))[0m
+[38;5;3m35,5,9,n_mutualEx,(assert (= (n 4) I))[0m
+[38;5;3m42,5,10,n_mutualEx,(assert (not (= (n 5) I)))[0m
+[38;5;3m36,5,11,n_mutualEx,(assert (= (n 5) I))[0m
+[38;5;3m42,5,12,n_mutualEx,(assert (not (= (n 1) T)))[0m
+[38;5;3m36,5,13,n_mutualEx,(assert (= (n 1) T))[0m
+[38;5;3m41,5,14,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,15,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,16,n_mutualEx,(assert (not (= (n 1) T)))[0m
+[38;5;3m36,5,17,n_mutualEx,(assert (= (n 1) T))[0m
+[38;5;3m41,5,18,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,19,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,20,n_mutualEx,(assert (not (= (n 2) T)))[0m
+[38;5;3m36,5,21,n_mutualEx,(assert (= (n 2) T))[0m
+[38;5;3m41,5,22,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,23,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,24,n_mutualEx,(assert (not (= (n 2) T)))[0m
+[38;5;3m36,5,25,n_mutualEx,(assert (= (n 2) T))[0m
+[38;5;3m41,5,26,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,27,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,28,n_mutualEx,(assert (not (= (n 3) T)))[0m
+[38;5;3m36,5,29,n_mutualEx,(assert (= (n 3) T))[0m
+[38;5;3m41,5,30,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,31,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,32,n_mutualEx,(assert (not (= (n 3) T)))[0m
+[38;5;3m36,5,33,n_mutualEx,(assert (= (n 3) T))[0m
+[38;5;3m41,5,34,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,35,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,36,n_mutualEx,(assert (not (= (n 4) T)))[0m
+[38;5;3m36,5,37,n_mutualEx,(assert (= (n 4) T))[0m
+[38;5;3m41,5,38,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,39,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,40,n_mutualEx,(assert (not (= (n 4) T)))[0m
+[38;5;3m36,5,41,n_mutualEx,(assert (= (n 4) T))[0m
+[38;5;3m41,5,42,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,43,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,44,n_mutualEx,(assert (not (= (n 5) T)))[0m
+[38;5;3m36,5,45,n_mutualEx,(assert (= (n 5) T))[0m
+[38;5;3m41,5,46,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,47,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,48,n_mutualEx,(assert (not (= (n 5) T)))[0m
+[38;5;3m36,5,49,n_mutualEx,(assert (= (n 5) T))[0m
+[38;5;3m41,5,50,n_mutualEx,(assert (not (= x true)))[0m
+[38;5;3m35,5,51,n_mutualEx,(assert (= x true))[0m
+[38;5;3m42,5,52,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m36,5,53,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m42,5,54,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m36,5,55,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m42,5,56,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m36,5,57,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m42,5,58,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m36,5,59,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m42,5,60,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m36,5,61,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m42,5,62,n_mutualEx,(assert (not (= (n 1) E)))[0m
+[38;5;3m36,5,63,n_mutualEx,(assert (= (n 1) E))[0m
+[38;5;3m42,5,64,n_mutualEx,(assert (not (= (n 1) E)))[0m
+[38;5;3m36,5,65,n_mutualEx,(assert (= (n 1) E))[0m
+[38;5;3m42,5,66,n_mutualEx,(assert (not (= (n 2) E)))[0m
+[38;5;3m36,5,67,n_mutualEx,(assert (= (n 2) E))[0m
+[38;5;3m42,5,68,n_mutualEx,(assert (not (= (n 2) E)))[0m
+[38;5;3m36,5,69,n_mutualEx,(assert (= (n 2) E))[0m
+[38;5;3m42,5,70,n_mutualEx,(assert (not (= (n 3) E)))[0m
+[38;5;3m36,5,71,n_mutualEx,(assert (= (n 3) E))[0m
+[38;5;3m42,5,72,n_mutualEx,(assert (not (= (n 3) E)))[0m
+[38;5;3m36,5,73,n_mutualEx,(assert (= (n 3) E))[0m
+[38;5;3m42,5,74,n_mutualEx,(assert (not (= (n 4) E)))[0m
+[38;5;3m36,5,75,n_mutualEx,(assert (= (n 4) E))[0m
+[38;5;3m42,5,76,n_mutualEx,(assert (not (= (n 4) E)))[0m
+[38;5;3m36,5,77,n_mutualEx,(assert (= (n 4) E))[0m
+[38;5;3m42,5,78,n_mutualEx,(assert (not (= (n 5) E)))[0m
+[38;5;3m36,5,79,n_mutualEx,(assert (= (n 5) E))[0m
+[38;5;3m42,5,80,n_mutualEx,(assert (not (= (n 5) E)))[0m
+[38;5;3m36,5,81,n_mutualEx,(assert (= (n 5) E))[0m
+[38;5;3m4077,1,82,n_mutualEx,MODULE main
+VAR
+n[1] : {i, t, c, e};
+n[2] : {i, t, c, e};
+n[3] : {i, t, c, e};
+n[4] : {i, t, c, e};
+n[5] : {i, t, c, e};
+x : boolean;
+
+--------------------
+
+n_Try__1 : process Proc__n_Try__1(n[1]);
+
+n_Try__2 : process Proc__n_Try__2(n[2]);
+
+n_Try__3 : process Proc__n_Try__3(n[3]);
+
+n_Try__4 : process Proc__n_Try__4(n[4]);
+
+n_Try__5 : process Proc__n_Try__5(n[5]);
+
+n_Crit__1 : process Proc__n_Crit__1(n[1], x);
+
+n_Crit__2 : process Proc__n_Crit__2(n[2], x);
+
+n_Crit__3 : process Proc__n_Crit__3(n[3], x);
+
+n_Crit__4 : process Proc__n_Crit__4(n[4], x);
+
+n_Crit__5 : process Proc__n_Crit__5(n[5], x);
+
+n_Exit__1 : process Proc__n_Exit__1(n[1]);
+
+n_Exit__2 : process Proc__n_Exit__2(n[2]);
+
+n_Exit__3 : process Proc__n_Exit__3(n[3]);
+
+n_Exit__4 : process Proc__n_Exit__4(n[4]);
+
+n_Exit__5 : process Proc__n_Exit__5(n[5]);
+
+n_Idle__1 : process Proc__n_Idle__1(n[1], x);
+
+n_Idle__2 : process Proc__n_Idle__2(n[2], x);
+
+n_Idle__3 : process Proc__n_Idle__3(n[3], x);
+
+n_Idle__4 : process Proc__n_Idle__4(n[4], x);
+
+n_Idle__5 : process Proc__n_Idle__5(n[5], x);
+
+--------------------
+
+ASSIGN
+init(n[1]) := case
+TRUE : i;
+esac;
+init(n[2]) := case
+TRUE : i;
+esac;
+init(n[3]) := case
+TRUE : i;
+esac;
+init(n[4]) := case
+TRUE : i;
+esac;
+init(n[5]) := case
+TRUE : i;
+esac;
+init(x) := case
+TRUE : TRUE;
+esac;
+
+--------------------
+
+
+
+--------------------
+
+MODULE Proc__n_Try__1(n__1)
+ASSIGN
+next(n__1) := case
+(n__1 = i) : t;
+TRUE : n__1;
+esac;
+
+---------
+
+MODULE Proc__n_Try__2(n__2)
+ASSIGN
+next(n__2) := case
+(n__2 = i) : t;
+TRUE : n__2;
+esac;
+
+---------
+
+MODULE Proc__n_Try__3(n__3)
+ASSIGN
+next(n__3) := case
+(n__3 = i) : t;
+TRUE : n__3;
+esac;
+
+---------
+
+MODULE Proc__n_Try__4(n__4)
+ASSIGN
+next(n__4) := case
+(n__4 = i) : t;
+TRUE : n__4;
+esac;
+
+---------
+
+MODULE Proc__n_Try__5(n__5)
+ASSIGN
+next(n__5) := case
+(n__5 = i) : t;
+TRUE : n__5;
+esac;
+
+---------
+
+MODULE Proc__n_Crit__1(n__1, x)
+ASSIGN
+next(n__1) := case
+((n__1 = t) & (x = TRUE)) : c;
+TRUE : n__1;
+esac;
+next(x) := case
+((n__1 = t) & (x = TRUE)) : FALSE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Crit__2(n__2, x)
+ASSIGN
+next(n__2) := case
+((n__2 = t) & (x = TRUE)) : c;
+TRUE : n__2;
+esac;
+next(x) := case
+((n__2 = t) & (x = TRUE)) : FALSE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Crit__3(n__3, x)
+ASSIGN
+next(n__3) := case
+((n__3 = t) & (x = TRUE)) : c;
+TRUE : n__3;
+esac;
+next(x) := case
+((n__3 = t) & (x = TRUE)) : FALSE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Crit__4(n__4, x)
+ASSIGN
+next(n__4) := case
+((n__4 = t) & (x = TRUE)) : c;
+TRUE : n__4;
+esac;
+next(x) := case
+((n__4 = t) & (x = TRUE)) : FALSE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Crit__5(n__5, x)
+ASSIGN
+next(n__5) := case
+((n__5 = t) & (x = TRUE)) : c;
+TRUE : n__5;
+esac;
+next(x) := case
+((n__5 = t) & (x = TRUE)) : FALSE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Exit__1(n__1)
+ASSIGN
+next(n__1) := case
+(n__1 = c) : e;
+TRUE : n__1;
+esac;
+
+---------
+
+MODULE Proc__n_Exit__2(n__2)
+ASSIGN
+next(n__2) := case
+(n__2 = c) : e;
+TRUE : n__2;
+esac;
+
+---------
+
+MODULE Proc__n_Exit__3(n__3)
+ASSIGN
+next(n__3) := case
+(n__3 = c) : e;
+TRUE : n__3;
+esac;
+
+---------
+
+MODULE Proc__n_Exit__4(n__4)
+ASSIGN
+next(n__4) := case
+(n__4 = c) : e;
+TRUE : n__4;
+esac;
+
+---------
+
+MODULE Proc__n_Exit__5(n__5)
+ASSIGN
+next(n__5) := case
+(n__5 = c) : e;
+TRUE : n__5;
+esac;
+
+---------
+
+MODULE Proc__n_Idle__1(n__1, x)
+ASSIGN
+next(n__1) := case
+(n__1 = e) : i;
+TRUE : n__1;
+esac;
+next(x) := case
+(n__1 = e) : TRUE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Idle__2(n__2, x)
+ASSIGN
+next(n__2) := case
+(n__2 = e) : i;
+TRUE : n__2;
+esac;
+next(x) := case
+(n__2 = e) : TRUE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Idle__3(n__3, x)
+ASSIGN
+next(n__3) := case
+(n__3 = e) : i;
+TRUE : n__3;
+esac;
+next(x) := case
+(n__3 = e) : TRUE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Idle__4(n__4, x)
+ASSIGN
+next(n__4) := case
+(n__4 = e) : i;
+TRUE : n__4;
+esac;
+next(x) := case
+(n__4 = e) : TRUE;
+TRUE : x;
+esac;
+
+---------
+
+MODULE Proc__n_Idle__5(n__5, x)
+ASSIGN
+next(n__5) := case
+(n__5 = e) : i;
+TRUE : n__5;
+esac;
+next(x) := case
+(n__5 = e) : TRUE;
+TRUE : x;
+esac;,[0m
+[38;5;3m15,2,83,n_mutualEx[0m
+[38;5;3m44,5,84,n_mutualEx,(assert (not (not (= 1 1))))[0m
+[38;5;3m38,5,85,n_mutualEx,(assert (not (= 1 1)))[0m
+[38;5;3m42,5,86,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m36,5,87,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m42,5,88,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m36,5,89,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m44,5,90,n_mutualEx,(assert (not (not (= 2 1))))[0m
+[38;5;3m42,5,91,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m36,5,92,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m42,5,93,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m36,5,94,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m44,5,95,n_mutualEx,(assert (not (not (= 3 1))))[0m
+[38;5;3m42,5,96,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m36,5,97,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m42,5,98,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m36,5,99,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m45,5,100,n_mutualEx,(assert (not (not (= 4 1))))[0m
+[38;5;3m43,5,101,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,102,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m43,5,103,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m37,5,104,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m45,5,105,n_mutualEx,(assert (not (not (= 5 1))))[0m
+[38;5;3m43,5,106,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,107,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m43,5,108,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m37,5,109,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m45,5,110,n_mutualEx,(assert (not (not (= 1 2))))[0m
+[38;5;3m43,5,111,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m37,5,112,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m43,5,113,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,114,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m45,5,115,n_mutualEx,(assert (not (not (= 2 2))))[0m
+[38;5;3m39,5,116,n_mutualEx,(assert (not (= 2 2)))[0m
+[38;5;3m43,5,117,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,118,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m43,5,119,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,120,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m45,5,121,n_mutualEx,(assert (not (not (= 3 2))))[0m
+[38;5;3m43,5,122,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,123,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m43,5,124,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,125,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m45,5,126,n_mutualEx,(assert (not (not (= 4 2))))[0m
+[38;5;3m43,5,127,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,128,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m43,5,129,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,130,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m45,5,131,n_mutualEx,(assert (not (not (= 5 2))))[0m
+[38;5;3m43,5,132,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,133,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m43,5,134,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,135,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m45,5,136,n_mutualEx,(assert (not (not (= 1 3))))[0m
+[38;5;3m43,5,137,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m37,5,138,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m43,5,139,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,140,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m45,5,141,n_mutualEx,(assert (not (not (= 2 3))))[0m
+[38;5;3m43,5,142,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,143,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m43,5,144,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,145,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m45,5,146,n_mutualEx,(assert (not (not (= 3 3))))[0m
+[38;5;3m39,5,147,n_mutualEx,(assert (not (= 3 3)))[0m
+[38;5;3m43,5,148,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,149,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m43,5,150,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,151,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m45,5,152,n_mutualEx,(assert (not (not (= 4 3))))[0m
+[38;5;3m43,5,153,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,154,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m43,5,155,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,156,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m45,5,157,n_mutualEx,(assert (not (not (= 5 3))))[0m
+[38;5;3m43,5,158,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,159,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m43,5,160,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,161,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m45,5,162,n_mutualEx,(assert (not (not (= 1 4))))[0m
+[38;5;3m43,5,163,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m37,5,164,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m43,5,165,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,166,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m45,5,167,n_mutualEx,(assert (not (not (= 2 4))))[0m
+[38;5;3m43,5,168,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,169,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m43,5,170,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,171,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m45,5,172,n_mutualEx,(assert (not (not (= 3 4))))[0m
+[38;5;3m43,5,173,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,174,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m43,5,175,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,176,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m45,5,177,n_mutualEx,(assert (not (not (= 4 4))))[0m
+[38;5;3m39,5,178,n_mutualEx,(assert (not (= 4 4)))[0m
+[38;5;3m43,5,179,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,180,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m43,5,181,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,182,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m45,5,183,n_mutualEx,(assert (not (not (= 5 4))))[0m
+[38;5;3m43,5,184,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,185,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m43,5,186,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,187,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m45,5,188,n_mutualEx,(assert (not (not (= 1 5))))[0m
+[38;5;3m43,5,189,n_mutualEx,(assert (not (= (n 1) C)))[0m
+[38;5;3m37,5,190,n_mutualEx,(assert (= (n 1) C))[0m
+[38;5;3m43,5,191,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,192,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m45,5,193,n_mutualEx,(assert (not (not (= 2 5))))[0m
+[38;5;3m43,5,194,n_mutualEx,(assert (not (= (n 2) C)))[0m
+[38;5;3m37,5,195,n_mutualEx,(assert (= (n 2) C))[0m
+[38;5;3m43,5,196,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,197,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m45,5,198,n_mutualEx,(assert (not (not (= 3 5))))[0m
+[38;5;3m43,5,199,n_mutualEx,(assert (not (= (n 3) C)))[0m
+[38;5;3m37,5,200,n_mutualEx,(assert (= (n 3) C))[0m
+[38;5;3m43,5,201,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,202,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m45,5,203,n_mutualEx,(assert (not (not (= 4 5))))[0m
+[38;5;3m43,5,204,n_mutualEx,(assert (not (= (n 4) C)))[0m
+[38;5;3m37,5,205,n_mutualEx,(assert (= (n 4) C))[0m
+[38;5;3m43,5,206,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,207,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m45,5,208,n_mutualEx,(assert (not (not (= 5 5))))[0m
+[38;5;3m39,5,209,n_mutualEx,(assert (not (= 5 5)))[0m
+[38;5;3m43,5,210,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,211,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m43,5,212,n_mutualEx,(assert (not (= (n 5) C)))[0m
+[38;5;3m37,5,213,n_mutualEx,(assert (= (n 5) C))[0m
+[38;5;3m96,5,214,n_mutualEx,(assert (not (=> (and (= (n 5) C) (= (n 3) C)) (and (= (n 3) C) (= (n 5) C)))))[0m
+[38;5;3m96,5,215,n_mutualEx,(assert (not (=> (and (= (n 5) C) (= (n 4) C)) (and (= (n 4) C) (= (n 5) C)))))[0m
+[38;5;3m96,5,216,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 5) C)) (and (= (n 2) C) (= (n 5) C)))))[0m
+[38;5;3m96,5,217,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 5) C)) (and (= (n 3) C) (= (n 5) C)))))[0m
+[38;5;3m96,5,218,n_mutualEx,(assert (not (=> (and (= (n 1) C) (= (n 5) C)) (and (= (n 1) C) (= (n 5) C)))))[0m
+[38;5;3m96,5,219,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 5) C)) (and (= (n 2) C) (= (n 5) C)))))[0m
+[38;5;3m96,5,220,n_mutualEx,(assert (not (=> (and (= (n 5) C) (= (n 4) C)) (and (= (n 5) C) (= (n 4) C)))))[0m
+[38;5;3m96,5,221,n_mutualEx,(assert (not (=> (and (= (n 1) C) (= (n 5) C)) (and (= (n 1) C) (= (n 5) C)))))[0m
+[38;5;3m96,5,222,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 4) C)) (and (= (n 3) C) (= (n 4) C)))))[0m
+[38;5;3m96,5,223,n_mutualEx,(assert (not (=> (and (= (n 5) C) (= (n 4) C)) (and (= (n 5) C) (= (n 4) C)))))[0m
+[38;5;3m96,5,224,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 4) C)) (and (= (n 2) C) (= (n 4) C)))))[0m
+[38;5;3m96,5,225,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 4) C)) (and (= (n 3) C) (= (n 4) C)))))[0m
+[38;5;3m96,5,226,n_mutualEx,(assert (not (=> (and (= (n 1) C) (= (n 4) C)) (and (= (n 1) C) (= (n 4) C)))))[0m
+[38;5;3m96,5,227,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 4) C)) (and (= (n 2) C) (= (n 4) C)))))[0m
+[38;5;3m96,5,228,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 5) C)) (and (= (n 5) C) (= (n 3) C)))))[0m
+[38;5;3m96,5,229,n_mutualEx,(assert (not (=> (and (= (n 4) C) (= (n 1) C)) (and (= (n 1) C) (= (n 4) C)))))[0m
+[38;5;3m96,5,230,n_mutualEx,(assert (not (=> (and (= (n 4) C) (= (n 3) C)) (and (= (n 4) C) (= (n 3) C)))))[0m
+[38;5;3m96,5,231,n_mutualEx,(assert (not (=> (and (= (n 5) C) (= (n 3) C)) (and (= (n 5) C) (= (n 3) C)))))[0m
+[38;5;3m96,5,232,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 2) C)) (and (= (n 2) C) (= (n 3) C)))))[0m
+[38;5;3m96,5,233,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 4) C)) (and (= (n 4) C) (= (n 3) C)))))[0m
+[38;5;3m96,5,234,n_mutualEx,(assert (not (=> (and (= (n 1) C) (= (n 3) C)) (and (= (n 1) C) (= (n 3) C)))))[0m
+[38;5;3m96,5,235,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 3) C)) (and (= (n 2) C) (= (n 3) C)))))[0m
+[38;5;3m96,5,236,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 5) C)) (and (= (n 5) C) (= (n 2) C)))))[0m
+[38;5;3m96,5,237,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 1) C)) (and (= (n 1) C) (= (n 3) C)))))[0m
+[38;5;3m96,5,238,n_mutualEx,(assert (not (=> (and (= (n 4) C) (= (n 2) C)) (and (= (n 4) C) (= (n 2) C)))))[0m
+[38;5;3m96,5,239,n_mutualEx,(assert (not (=> (and (= (n 5) C) (= (n 2) C)) (and (= (n 5) C) (= (n 2) C)))))[0m
+[38;5;3m96,5,240,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 2) C)) (and (= (n 3) C) (= (n 2) C)))))[0m
+[38;5;3m96,5,241,n_mutualEx,(assert (not (=> (and (= (n 4) C) (= (n 2) C)) (and (= (n 4) C) (= (n 2) C)))))[0m
+[38;5;3m96,5,242,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 1) C)) (and (= (n 1) C) (= (n 2) C)))))[0m
+[38;5;3m96,5,243,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 3) C)) (and (= (n 3) C) (= (n 2) C)))))[0m
+[38;5;3m96,5,244,n_mutualEx,(assert (not (=> (and (= (n 1) C) (= (n 5) C)) (and (= (n 5) C) (= (n 1) C)))))[0m
+[38;5;3m96,5,245,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 1) C)) (and (= (n 1) C) (= (n 2) C)))))[0m
+[38;5;3m96,5,246,n_mutualEx,(assert (not (=> (and (= (n 4) C) (= (n 1) C)) (and (= (n 4) C) (= (n 1) C)))))[0m
+[38;5;3m96,5,247,n_mutualEx,(assert (not (=> (and (= (n 5) C) (= (n 1) C)) (and (= (n 5) C) (= (n 1) C)))))[0m
+[38;5;3m96,5,248,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 1) C)) (and (= (n 3) C) (= (n 1) C)))))[0m
+[38;5;3m96,5,249,n_mutualEx,(assert (not (=> (and (= (n 4) C) (= (n 1) C)) (and (= (n 4) C) (= (n 1) C)))))[0m
+[38;5;3m96,5,250,n_mutualEx,(assert (not (=> (and (= (n 2) C) (= (n 1) C)) (and (= (n 2) C) (= (n 1) C)))))[0m
+[38;5;3m96,5,251,n_mutualEx,(assert (not (=> (and (= (n 3) C) (= (n 1) C)) (and (= (n 3) C) (= (n 1) C)))))[0m
+x=((n[1] = c) & (n[2] = c))
+[38;5;3m67,5,252,n_mutualEx,(assert (not (not (and (= (n 1) C) (= (n 2) C)))))[0m
+genTable (((n[1] = c) & (n[2] = c)))finished
+n->state
+n->state
+gen (assert (and (= (select n 1) C) (= (select n 2) C)))
+
+finished
+set(assert (and (= (select n 1) C) (= (select n 2) C)))
+
+
+[38;5;3m72,15,253,n_mutualEx,(assert (and (= (select n 1) C) (= (select n 2) C)))
+
+[0m
+[38;5;3m72,15,254,n_mutualEx,(assert (and (= (select n 1) C) (= (select n 2) C)))
+
+[0m
+sat branch
+[n = [2 -> C, 1 -> C, else -> C],
+ k!2157 = [2 -> C, 1 -> C, else -> C]]
+fls
+varName:=n[2]
+typeTstate
+varName:=n[1]
+typeTstate
+varName:=k!2157[2]
+varName:=k!2157[1]
+getCe:((n[2] = c) & (n[1] = c))
+ce******* begin
+
+(assert (not (and (= (select n 2) C) (= (select n 1) C))))
+
+
+(assert (and (= (select n 1) C) (= (select n 2) C)))
+
+----
+(assert (not (and (= (select n 2) C) (= (select n 1) C))))
+
+
+ce******** end
+
+enter again
+[38;5;3m133,15,255,n_mutualEx,(assert (and (= (select n 1) C) (= (select n 2) C)))
+
+
+(assert (not (and (= (select n 2) C) (= (select n 1) C))))
+
+[0m
+unsat
+Client.Smt2 finished
+((n[2] = c) & (n[1] = c))
+will minify
+
+[38;5;6mto be minified: ((n[2] = c) & (n[1] = c))[0m
+send it to smv(!((n[1] = c)))
+[38;5;3m32,3,256,n_mutualEx,(!((n[1] = c)))[0m
+send it to smv(!((n[2] = c)))
+[38;5;3m32,3,257,n_mutualEx,(!((n[2] = c)))[0m
+forall sym formulas
+(!((n[1] = c) & (n[2] = c)))
+send it to smv(!((n[1] = c) & (n[2] = c)))
+[38;5;3m45,3,258,n_mutualEx,(!((n[1] = c) & (n[2] = c)))[0m
+result=((n[1] = c) & (n[2] = c))
+[def-p__Inv3:client]
+[def-p__Inv4:client]
+[const 2:client:p__Inv3]
+[const 1:client:p__Inv4]
+((n[p__Inv4:__ref__] = const C) & (n[p__Inv3:__ref__] = const C))
+------------------wait
+
+((n[1] = c) & (n[2] = c))
+------------------wait
+
+[38;5;3minitial invs:
+[0m
+[38;5;3minvHoldForRule3-inv__2:((x = TRUE) & (n[2] = c))[0m
+[38;5;3minvHoldForRule3-inv__2:((x = TRUE) & (n[1] = c))[0m
+[38;5;3minvHoldForRule3-inv__3:((n[2] = e) & (n[1] = c))[0m
+[38;5;3minvHoldForRule3-inv__3:((n[3] = e) & (n[1] = c))[0m
+[38;5;3minvHoldForRule3-inv__3:((n[4] = e) & (n[1] = c))[0m
+[38;5;3minvHoldForRule3-inv__3:((n[5] = e) & (n[1] = c))[0m
+[38;5;3minvHoldForRule3-inv__4:((x = TRUE) & (n[1] = e))[0m
+[38;5;3minvHoldForRule3-inv__1:((n[1] = c) & (n[2] = c))[0m
+[38;5;3minvHoldForRule3-inv__2:((x = TRUE) & (n[1] = c))[0m
+[38;5;3minvHoldForRule3-inv__5:((n[2] = e) & (n[1] = e))[0m
+[38;5;3minvHoldForRule3-inv__5:((n[3] = e) & (n[1] = e))[0m
+[38;5;3minvHoldForRule3-inv__5:((n[4] = e) & (n[1] = e))[0m
+[38;5;3minvHoldForRule3-inv__5:((n[5] = e) & (n[1] = e))[0m
+[38;5;3minvHoldForRule3-inv__3:((n[2] = e) & (n[1] = c))[0m
+[38;5;3minvHoldForRule3-inv__3:((n[1] = e) & (n[2] = c))[0m
+invs:=rule: n_Try[1]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Try[2]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Try[3]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[4]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[5]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[1]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule3-inv__2:((x = TRUE) & (n[2] = c))
+rule: n_Crit[2]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule3-inv__2:((x = TRUE) & (n[1] = c))
+rule: n_Crit[3]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[4]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[5]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[1]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Exit[2]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Exit[3]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[4]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[5]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[1]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Idle[2]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Idle[3]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[4]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[5]; inv: ((n[1] = c) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[1]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Try[2]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[3]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[4]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[5]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[1]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[2]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[3]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[4]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[5]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Exit[1]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Exit[2]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[3]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[4]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[5]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[1]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Idle[2]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule3-inv__3:((n[2] = e) & (n[1] = c))
+rule: n_Idle[3]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule3-inv__3:((n[3] = e) & (n[1] = c))
+rule: n_Idle[4]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule3-inv__3:((n[4] = e) & (n[1] = c))
+rule: n_Idle[5]; inv: ((x = TRUE) & (n[1] = c)); g: TRUE; rel: invHoldForRule3-inv__3:((n[5] = e) & (n[1] = c))
+rule: n_Try[1]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Try[2]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Try[3]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[4]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[5]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[1]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[2]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule3-inv__4:((x = TRUE) & (n[1] = e))
+rule: n_Crit[3]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[4]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[5]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[1]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule3-inv__1:((n[1] = c) & (n[2] = c))
+rule: n_Exit[2]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Exit[3]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[4]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[5]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[1]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Idle[2]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule1
+rule: n_Idle[3]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[4]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[5]; inv: ((n[1] = e) & (n[2] = c)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[1]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Try[2]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[3]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[4]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[5]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[1]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[2]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[3]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[4]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[5]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Exit[1]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule3-inv__2:((x = TRUE) & (n[1] = c))
+rule: n_Exit[2]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[3]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[4]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[5]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[1]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Idle[2]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule3-inv__5:((n[2] = e) & (n[1] = e))
+rule: n_Idle[3]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule3-inv__5:((n[3] = e) & (n[1] = e))
+rule: n_Idle[4]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule3-inv__5:((n[4] = e) & (n[1] = e))
+rule: n_Idle[5]; inv: ((x = TRUE) & (n[1] = e)); g: TRUE; rel: invHoldForRule3-inv__5:((n[5] = e) & (n[1] = e))
+rule: n_Try[1]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Try[2]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Try[3]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[4]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Try[5]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[1]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[2]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Crit[3]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[4]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Crit[5]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[1]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule3-inv__3:((n[2] = e) & (n[1] = c))
+rule: n_Exit[2]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule3-inv__3:((n[1] = e) & (n[2] = c))
+rule: n_Exit[3]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[4]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Exit[5]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[1]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Idle[2]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule1
+rule: n_Idle[3]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[4]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2
+rule: n_Idle[5]; inv: ((n[1] = e) & (n[2] = e)); g: TRUE; rel: invHoldForRule2

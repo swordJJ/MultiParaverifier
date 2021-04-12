@@ -61,6 +61,6 @@ i != j   ->
  end  end ;
 
 Invariant "rule_1"
-forall P1 : NODE do
-  (n[P1] = C -> x = false)
-end ;
+forall P2 : NODE do forall P1 : NODE do
+  P2 != P1 -> (n[P1] = E -> n[P2] != E)
+end end ;

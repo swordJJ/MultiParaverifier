@@ -82,5 +82,5 @@ end;
 
 Invariant "rule_3"
 forall j : NODE do forall i : NODE do
-  j != i -> (n[i] = E -> n[j] != C)
+  j != i -> (n[i] = E -> n[j] != E)
 end end ;

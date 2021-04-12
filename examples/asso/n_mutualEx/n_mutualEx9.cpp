@@ -659,9 +659,9 @@ bool mu__boolexpr6;
   else {
 bool mu__boolexpr7;
 bool mu__boolexpr8;
-  if (!((mu_n[mu_P1]) == (mu_T))) mu__boolexpr8 = FALSE ;
+  if (!((mu_n[mu_P1]) == (mu_I))) mu__boolexpr8 = FALSE ;
   else {
-  mu__boolexpr8 = ((mu_n[mu_P2]) == (mu_I)) ; 
+  mu__boolexpr8 = ((mu_n[mu_P2]) == (mu_T)) ; 
 }
   if (!(mu__boolexpr8)) mu__boolexpr7 = TRUE ;
   else {

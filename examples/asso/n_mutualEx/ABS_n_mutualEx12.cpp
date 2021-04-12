@@ -800,7 +800,7 @@ bool mu__boolexpr12;
 bool mu__boolexpr13;
   if (!((mu_n[mu_i]) == (mu_E))) mu__boolexpr13 = TRUE ;
   else {
-  mu__boolexpr13 = ((mu_n[mu_j]) != (mu_C)) ; 
+  mu__boolexpr13 = ((mu_n[mu_j]) != (mu_E)) ; 
 }
   mu__boolexpr12 = (mu__boolexpr13) ; 
 }

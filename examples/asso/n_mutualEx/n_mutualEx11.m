@@ -62,5 +62,5 @@ i != j   ->
 
 Invariant "rule_9"
 forall P2 : NODE do forall P1 : NODE do
-  P2 != P1 -> (n[P1] = C -> n[P2] != C)
+  P2 != P1 -> (n[P1] = E -> n[P2] != C)
 end end ;

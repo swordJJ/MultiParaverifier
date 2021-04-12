@@ -62,5 +62,5 @@ i != j   ->
 
 Invariant "rule_5"
 forall P2 : NODE do forall P1 : NODE do
-  P2 != P1 -> (n[P1] = E -> n[P2] != E)
+  P2 != P1 -> (n[P1] = T & n[P2] = I -> x = true)
 end end ;

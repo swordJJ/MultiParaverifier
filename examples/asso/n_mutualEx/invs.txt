@@ -1,10 +1,10 @@
-rule_1: n[P1] = C -> n[P2] != C
-rule_2: n[P1] = C -> x = false
-rule_3: n[P1] = E -> x = false
-rule_4: n[P1] = I & n[P2] = T -> x = true
-rule_5: n[P1] = E -> n[P2] != E
-rule_6: n[P1] = T & n[P2] = I -> x = true
-rule_7: n[P1] = E -> n[P2] != C
-rule_8: n[P1] = C -> n[P2] != E
-rule_9: n[P1] = T & n[P2] = T -> x = true
+rule_1: n[P1] = E -> n[P2] != E
+rule_2: n[P1] = C -> n[P2] != E
+rule_3: n[P1] = C -> n[P2] != C
+rule_4: n[P1] = T & n[P2] = T -> x = true
+rule_5: n[P1] = T & n[P2] = I -> x = true
+rule_6: n[P1] = C -> x = false
+rule_7: n[P1] = I & n[P2] = T -> x = true
+rule_8: n[P1] = E -> x = false
+rule_9: n[P1] = E -> n[P2] != C
 rule_10: n[P1] = I & n[P2] = I -> x = true

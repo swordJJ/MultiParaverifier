@@ -660,7 +660,7 @@ bool mu__boolexpr6;
 bool mu__boolexpr7;
   if (!((mu_n[mu_P1]) == (mu_C))) mu__boolexpr7 = TRUE ;
   else {
-  mu__boolexpr7 = ((mu_n[mu_P2]) != (mu_E)) ; 
+  mu__boolexpr7 = ((mu_n[mu_P2]) != (mu_C)) ; 
 }
   mu__boolexpr6 = (mu__boolexpr7) ; 
 }

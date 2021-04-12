@@ -62,5 +62,5 @@ i != j   ->
 
 Invariant "rule_7"
 forall P2 : NODE do forall P1 : NODE do
-  P2 != P1 -> (n[P1] = T & n[P2] = I -> x = true)
+  P2 != P1 -> (n[P1] = I & n[P2] = T -> x = true)
 end end ;

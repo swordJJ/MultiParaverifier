@@ -649,23 +649,18 @@ int mu__invariant_3() // Invariant "rule_3"
 bool mu__quant4; 
 mu__quant4 = TRUE;
 {
-for(int mu_P1 = 1; mu_P1 <= 4; mu_P1++) {
+for(int mu_P2 = 1; mu_P2 <= 4; mu_P2++) {
 bool mu__quant5; 
 mu__quant5 = TRUE;
 {
-for(int mu_P2 = 1; mu_P2 <= 4; mu_P2++) {
+for(int mu_P1 = 1; mu_P1 <= 4; mu_P1++) {
 bool mu__boolexpr6;
-  if (!((mu_P1) != (mu_P2))) mu__boolexpr6 = TRUE ;
+  if (!((mu_P2) != (mu_P1))) mu__boolexpr6 = TRUE ;
   else {
 bool mu__boolexpr7;
-bool mu__boolexpr8;
-  if (!((mu_n[mu_P1]) == (mu_T))) mu__boolexpr8 = FALSE ;
+  if (!((mu_n[mu_P1]) == (mu_C))) mu__boolexpr7 = TRUE ;
   else {
-  mu__boolexpr8 = ((mu_n[mu_P2]) == (mu_I)) ; 
-}
-  if (!(mu__boolexpr8)) mu__boolexpr7 = TRUE ;
-  else {
-  mu__boolexpr7 = ((mu_x) == (mu_true)) ; 
+  mu__boolexpr7 = ((mu_n[mu_P2]) != (mu_E)) ; 
 }
   mu__boolexpr6 = (mu__boolexpr7) ; 
 }
@@ -680,54 +675,54 @@ if ( !(mu__quant5) )
 return mu__quant4;
 };
 
-bool mu__condition_9() // Condition for Rule "rule_3"
+bool mu__condition_8() // Condition for Rule "rule_3"
 {
   return mu__invariant_3( );
 }
 
 /**** end rule declaration ****/
 
-int mu__invariant_10() // Invariant "mutualEx"
+int mu__invariant_9() // Invariant "mutualEx"
 {
+bool mu__quant10; 
+mu__quant10 = TRUE;
+{
+for(int mu_i = 1; mu_i <= 4; mu_i++) {
 bool mu__quant11; 
 mu__quant11 = TRUE;
 {
-for(int mu_i = 1; mu_i <= 4; mu_i++) {
-bool mu__quant12; 
-mu__quant12 = TRUE;
-{
 for(int mu_j = 1; mu_j <= 4; mu_j++) {
+bool mu__boolexpr12;
+  if (!((mu_i) != (mu_j))) mu__boolexpr12 = TRUE ;
+  else {
 bool mu__boolexpr13;
-  if (!((mu_i) != (mu_j))) mu__boolexpr13 = TRUE ;
+  if (!((mu_n[mu_i]) == (mu_C))) mu__boolexpr13 = TRUE ;
   else {
-bool mu__boolexpr14;
-  if (!((mu_n[mu_i]) == (mu_C))) mu__boolexpr14 = TRUE ;
-  else {
-  mu__boolexpr14 = ((mu_n[mu_j]) != (mu_C)) ; 
+  mu__boolexpr13 = ((mu_n[mu_j]) != (mu_C)) ; 
 }
-  mu__boolexpr13 = (mu__boolexpr14) ; 
+  mu__boolexpr12 = (mu__boolexpr13) ; 
 }
-if ( !(mu__boolexpr13) )
-  { mu__quant12 = FALSE; break; }
-};
-};
-if ( !(mu__quant12) )
+if ( !(mu__boolexpr12) )
   { mu__quant11 = FALSE; break; }
 };
 };
-return mu__quant11;
+if ( !(mu__quant11) )
+  { mu__quant10 = FALSE; break; }
+};
+};
+return mu__quant10;
 };
 
-bool mu__condition_15() // Condition for Rule "mutualEx"
+bool mu__condition_14() // Condition for Rule "mutualEx"
 {
-  return mu__invariant_10( );
+  return mu__invariant_9( );
 }
 
 /**** end rule declaration ****/
 
 const rulerec invariants[] = {
-{"mutualEx", &mu__condition_15, NULL, },
-{"rule_3", &mu__condition_9, NULL, },
+{"mutualEx", &mu__condition_14, NULL, },
+{"rule_3", &mu__condition_8, NULL, },
 };
 const unsigned short numinvariants = 2;
 

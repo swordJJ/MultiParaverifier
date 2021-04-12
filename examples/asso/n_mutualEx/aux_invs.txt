@@ -1,20 +1,20 @@
-rule_1:   n[i] = C -> x = false
-rule_2:   n[j] = C -> x = false
-rule_3:   n[i] = E -> n[j] != E
-rule_4:   n[j] = E -> n[i] != E
-rule_5:   n[i] = T & n[j] = I -> x = true
-rule_6:   n[j] = T & n[i] = I -> x = true
-rule_7:   n[i] = C -> n[j] != E
-rule_8:   n[j] = C -> n[i] != E
-rule_9:   n[i] = E -> x = false
-rule_10:   n[j] = E -> x = false
-rule_11:   n[i] = E -> n[j] != C
-rule_12:   n[j] = E -> n[i] != C
-rule_13:   n[i] = C -> n[j] != C
-rule_14:   n[j] = C -> n[i] != C
-rule_15:   n[i] = T & n[j] = T -> x = true
-rule_16:   n[j] = T & n[i] = T -> x = true
-rule_17:   n[i] = I & n[j] = T -> x = true
-rule_18:   n[j] = I & n[i] = T -> x = true
+rule_1:   n[i] = C -> n[j] != C
+rule_2:   n[j] = C -> n[i] != C
+rule_3:   n[i] = C -> x = false
+rule_4:   n[j] = C -> x = false
+rule_5:   n[i] = E -> x = false
+rule_6:   n[j] = E -> x = false
+rule_7:   n[i] = I & n[j] = T -> x = true
+rule_8:   n[j] = I & n[i] = T -> x = true
+rule_9:   n[i] = E -> n[j] != E
+rule_10:   n[j] = E -> n[i] != E
+rule_11:   n[i] = T & n[j] = I -> x = true
+rule_12:   n[j] = T & n[i] = I -> x = true
+rule_13:   n[i] = E -> n[j] != C
+rule_14:   n[j] = E -> n[i] != C
+rule_15:   n[i] = C -> n[j] != E
+rule_16:   n[j] = C -> n[i] != E
+rule_17:   n[i] = T & n[j] = T -> x = true
+rule_18:   n[j] = T & n[i] = T -> x = true
 rule_19:   n[i] = I & n[j] = I -> x = true
 rule_20:   n[j] = I & n[i] = I -> x = true

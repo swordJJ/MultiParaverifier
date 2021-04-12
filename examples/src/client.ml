@@ -20,7 +20,6 @@ let initVardefTbl vardefs=
 					let ()=Core.Std.Hashtbl.replace (varDefTab)  ~key:(fst x) ~data:(snd x) in
 			addOne xs' in
 	let result=addOne vpairs in
-	(* let tmp=List.map ~f:(fun x-> let (k,d)=x in print_endline (k^"====>"^d)) vpairs in  *)
 	()
 type request_type =
   | ERROR
@@ -40,6 +39,7 @@ type request_type =
   | CHECK_INV_BY_MU
   (*add new service*)
   | CHECK_INV_BY_ASSOCIATE_RULE
+  | SET_MU_CONTEXT_DT
   | CHECK_INV_BY_DT_TREE
   | QUERY_SMT2_CE
   | QUERY_STAND_SMT2_CE
@@ -63,9 +63,10 @@ let request_type_to_str rt =
   | CHECK_INV_BY_MU -> "9"
    (*add new service*)
    | CHECK_INV_BY_ASSOCIATE_RULE -> "13"
-   | CHECK_INV_BY_DT_TREE -> "14"
-   | QUERY_SMT2_CE -> "15"
-   | QUERY_STAND_SMT2_CE -> "16"
+   | SET_MU_CONTEXT_DT -> "14"
+   | CHECK_INV_BY_DT_TREE -> "15"
+   | QUERY_SMT2_CE -> "16"
+   | QUERY_STAND_SMT2_CE -> "17"
 
 let str_to_request_type str =
   match str with
@@ -213,8 +214,23 @@ module Asso = struct
   let set_context name context =
     let (s, _) = request CHECK_INV_BY_ASSOCIATE_RULE (sprintf "%s,%s" name context) (!host) (!port) in
     s = OK
+end
 
+module Decision = struct
 
+  let host = ref (UnixLabels.inet_addr_of_string "127.0.0.1")
+
+  let port = ref 50008
+
+  let set_context name context =
+    let (s, _) = request SET_MU_CONTEXT_DT (sprintf "%s,%s" name context) (!host) (!port) in
+    s = OK
+
+  let check_inv name inv =
+    let (_, res) = request CHECK_INV_BY_DT_TREE (sprintf "%s,%s" name inv) (!host) (!port) in
+    match res with
+    | r::[] -> Bool.of_string r
+    | _ -> raise Server_exception
 
 end
 

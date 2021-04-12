@@ -1,5 +1,4 @@
-
-
+#coding=utf-8
 import os
 import subprocess
 from subprocess import PIPE
@@ -19,6 +18,7 @@ class Murphi(object):
         self.mu_ctx = mu_ctx
         self.memory = memory
         self.timeout = timeout
+        self.name_dt = name 
 
     def check(self, inv):
         white_list = set([
@@ -62,13 +62,13 @@ class Murphi(object):
         process = spawn(filename + ' -pn -m %d'%self.memory)
         res = process.expect(['Invariant\s+".*?"\s+failed.', EOF, TIMEOUT], timeout=self.timeout)
         process.terminate(force=True)
-        os.remove(os.path.join(self.mu_file_dir, self.name + '.m'))
-        os.remove(os.path.join(self.mu_file_dir, self.name + '.cpp'))
-        os.remove(os.path.join(self.mu_file_dir, self.name))
+        # os.remove(os.path.join(self.mu_file_dir, self.name + '.m'))
+        # os.remove(os.path.join(self.mu_file_dir, self.name + '.cpp'))
+        # os.remove(os.path.join(self.mu_file_dir, self.name))
         return res == 0
 
-
-
+    def m_file_name(self):
+		return os.path.join(self.mu_file_dir, self.name + '.m') 
 
 if __name__ == '__main__':
     ctx = ''

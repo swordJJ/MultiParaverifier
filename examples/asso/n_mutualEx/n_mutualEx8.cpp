@@ -649,13 +649,13 @@ int mu__invariant_3() // Invariant "rule_6"
 bool mu__quant4; 
 mu__quant4 = TRUE;
 {
-for(int mu_P1 = 1; mu_P1 <= 4; mu_P1++) {
+for(int mu_P2 = 1; mu_P2 <= 4; mu_P2++) {
 bool mu__quant5; 
 mu__quant5 = TRUE;
 {
-for(int mu_P2 = 1; mu_P2 <= 4; mu_P2++) {
+for(int mu_P1 = 1; mu_P1 <= 4; mu_P1++) {
 bool mu__boolexpr6;
-  if (!((mu_P1) != (mu_P2))) mu__boolexpr6 = TRUE ;
+  if (!((mu_P2) != (mu_P1))) mu__boolexpr6 = TRUE ;
   else {
 bool mu__boolexpr7;
 bool mu__boolexpr8;

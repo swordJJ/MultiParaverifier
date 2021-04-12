@@ -46,6 +46,14 @@ module Asso : sig
   val set_context : string -> string -> bool
 end
 
+module Decision : sig
+  val host : UnixLabels.inet_addr ref
+  val port : int ref
+  val set_context : string -> string -> bool
+  val check_inv : string -> string -> bool
+end
+
+
 module Smt2 : sig
   val host : UnixLabels.inet_addr ref
   val port : int ref

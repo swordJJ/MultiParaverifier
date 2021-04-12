@@ -1380,7 +1380,7 @@ let rec anotherTabular_rules_cinvs rname_paraminfo_pairs cinvs relations =
       let tmp=List.map ~f:(fun x -> print_endline (ToStr.Smv.form_act x)) all in 
       all
 
-  let anotherFind ?(insym_types=[]) ?(smv_escape=(fun inv_str -> inv_str)) ?(smv="") ?(smv_ord="") ?(smv_bmc="") ?(murphi="") ?(asso="") ?(symMethod=false) ?(symIndex=true) protocol =
+  let anotherFind ?(insym_types=[]) ?(smv_escape=(fun inv_str -> inv_str)) ?(smv="") ?(smv_ord="") ?(smv_bmc="") ?(murphi="") ?(asso="") ?(deci="") ?(symMethod=false) ?(symIndex=true) protocol =
     let {name; types; vardefs; init; rules; properties} = Loach.Trans.act ~loach:protocol in
     let properties1=List.tl properties in
     let Some(invProps)=properties1 in
@@ -1396,6 +1396,7 @@ let rec anotherTabular_rules_cinvs rname_paraminfo_pairs cinvs relations =
     let properties=[ddProp] in 
     let ()=	print_endline "=====set mu context=====\n" in
     let _mu_context = Murphi.set_context name murphi in
+    let () = print_endline(murphi) in 
     let ()= print_endline "=====set smv context=====\n" in 
     let _smv_context =
      begin
@@ -1406,6 +1407,8 @@ let rec anotherTabular_rules_cinvs rname_paraminfo_pairs cinvs relations =
     in
     let () = print_endline "=====set assoc context=====\n" in 
     let _assoc_context = Asso.set_context name asso in 
+    let () = print_endline "=====set desicion tree context======\n" in 
+    let _decision_context = Decision.set_context name murphi in 
     let () = Prt.info ("===== context set end=====\n") in 
     type_defs := types;
     protocol_name := name;

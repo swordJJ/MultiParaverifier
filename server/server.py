@@ -7,6 +7,7 @@ from smvserv import SMV
 from z3serv import SMT2
 from muserv import Murphi
 import assoserv
+from dtserv import dt
 from settings import MAX_SLEEP_TIME, TIME_OUT, SMV_PATH, SMV_FILE_DIR, HOST, PORT
 from settings import MU_PATH, MU_INCLUDE, GXX_PATH, MU_FILE_DIR, MU_CHECK_TIMEOUT, MU_CHECK_MEMORY
 import subprocess
@@ -35,9 +36,13 @@ SET_MU_CONTEXT = '8'
 CHECK_INV_BY_MU = '9'
 
 CHECK_INV_BY_ASSOCIATE_RULE='13'
-CHECK_INV_BY_DT_TREE='14'
-QUERY_SMT2_CE='15'
-QUERY_STAND_SMT2_CE='16'
+
+SET_MU_CONTEXT_DT = '14' #决策树准备服务
+CHECK_INV_BY_DT_TREE='15'#决策树判断公式服务
+
+QUERY_SMT2_CE='16'
+QUERY_STAND_SMT2_CE='17'
+
 
 
 smt2_pool = {}
@@ -47,8 +52,17 @@ smv_bmc_pool = {}
 mu_pool = {}
 
 __verbose = False
+data_set_csv = 'data.csv' #训练数据收集器产生的训练数据文件的名称，其中，第一行是表头，其余行为可达状态
+path_dict = {} #存储可复用的路径文件，键是路径文件中属性组成的字符串，值为路径文件名称
+candidate_dict = {} #存储候选不变式判断结果，键是候选不变式特殊符号（整体排序后的字符串，排序指交换赋值表达式的位置和等号两边元素的位置，具体使用sort函数完成），值为判断结果
+path_content_dict = {} #dt3-2新加变量，用于将路径文件存于缓存，键为路径文件名称，值为路径列表
+title = [] #存储训练数据的表头--协议的属性集合
+data_set = [] #存储训练数据的内容--可达状态
+protocol_dict = {} #用于记录判断过协议的结果
+last_protocol = '' #用于记录上一个协议的名称，用于记录判断过的协议
+is_cache = False #是否使用完整cache
 
-def base(cmd):
+def run_command(cmd):
     if subprocess.call(cmd, shell=True):
         raise Exception("{} fail".format(cmd))
 
@@ -84,6 +98,16 @@ def gen_smv_process(name, content, ord_str, name_add=""):
         smv.go_and_compute_reachable()
 
 def serv(conn, addr):
+    global data_set_csv
+    global sign_txt 
+    global path_dict
+    global candidate_dict
+    global path_content_dict
+    global title
+    global data_set
+    global protocol_dict
+    global last_protocol
+    global is_cache
     data = ''
     size = 1024
     len_to_recv = None
@@ -236,8 +260,67 @@ def serv(conn, addr):
         """
         In this case, cmd should be [length, command, command_id, name, inv]
         """
-        base('python3 assoserv/assoc.py -p ../examples/asso/%s' % (cmd[2]))
+        run_command('python3 assoserv/assoc.py -p ../examples/asso/%s' % (cmd[2]))
         conn.sendall(OK)
+    elif cmd[0] == SET_MU_CONTEXT_DT:
+		"""
+		In this case, cmd should be [length, command, command_id, name, context]
+		"""
+		print("SET_MU_CONTEXT is running")
+		print(cmd)
+		if (last_protocol != '') and (is_cache == True):
+			protocol_dict[last_protocol] = candidate_dict
+			path_dict = {}
+			path_content_dict = {}
+		else:
+			path_dict = {} #存储可复用的路径文件，键是路径文件中属性组成的字符串，值为路径文件名称
+			candidate_dict = {} #存储候选不变式判断结果，键是候选不变式特殊符号（整体排序后的字符串，排序指交换赋值表达式的位置和等号两边元素的位置，具体使用sort函数完成），值为判断结果
+			path_content_dict = {} #dt3-2新加变量，用于将路径文件存于缓存，键为路径文件名称，值为路径列表
+		
+		is_cache = False #初始化is_cache
+
+		if cmd[2] in list(protocol_dict.keys()):
+			candidate_dict = protocol_dict[cmd[2]]
+			reuse_flag = True
+			last_protocol = ''
+			print '复用协议：' + cmd[2]
+			conn.sendall(OK)
+		else:
+			mu = Murphi(cmd[2], MU_PATH, MU_INCLUDE, GXX_PATH, MU_FILE_DIR, ','.join(cmd[3:]), 
+			memory=MU_CHECK_MEMORY, timeout=MU_CHECK_TIMEOUT)
+			#mu_pool[cmd[2]] = mu
+			print(','.join(cmd[3:]))
+			res = mu.check('true') 
+			m_file_name = mu.m_file_name()
+			print 'DtModuleData1:start!'
+			title,data_set = dt.DtModuleData1(data_set_csv,m_file_name)
+		
+			last_protocol = cmd[2]
+		
+			print 'DtModuleData1:ok!\nserver start!\n'
+			conn.sendall(OK)
+	#决策树-修改增加6-end
+    elif cmd[0] == CHECK_INV_BY_DT_TREE:
+		"""
+		In this case, cmd should be [length, command, command_id, name, inv]
+		"""
+		#print "CHECK_INV is running"#test 20180802
+		#sys.stdout.write(data[:10240]) #test 20180804
+		#print ""#test 20180804
+		
+		is_cache = True #用于记录是否使用cache，防止第一次运行带有cache的客户端会使复用机制生成“空”的记录
+		
+		print 'checking' + cmd[3]
+		z3 = smt2_pool['new'] #z3类
+		#res = test.prior.Test(cmd[3],z3) #调用优先级决策树模块，包括生成优先决策树，决策树路径化，利用Z3和路径判断公式是否为不变式
+		#print title
+		res = dt.dt.candidateInvChecker(cmd[3],z3,title,data_set,path_dict,candidate_dict,path_content_dict,__sca) #调用决策树模块-综合，筛选候选不变式，返回正确性。输入为：候选不变式、z3实例、表头、状态集合、路径字典、候选不变式字典
+		if res == 'true':
+			print 'inv: ' + cmd[3] + '\n'
+		else :
+			print 'not inv: ' + cmd[3] + '\n'
+		conn.sendall(','.join([OK, res]))	
+	#决策树-修改增加5-end
     conn.close()
     if __verbose: print(': ', res)
 

@@ -1,0 +1,8 @@
+rule_1:   ExGntd = true & Chan3[i].Cmd = InvAck -> Chan2[j].Cmd = Empty
+rule_2:   ExGntd = true & Chan3[i].Cmd = InvAck -> ShrSet[j] = false
+rule_3:   ExGntd = true & Chan3[i].Cmd = InvAck -> InvSet[j] = false
+rule_4:   ExGntd = true & Chan3[i].Cmd = InvAck -> Chan2[j].Cmd != Inv
+rule_5:   ExGntd = true & Chan3[i].Cmd = InvAck -> Chan3[j].Cmd = Empty
+rule_6:   ExGntd = true & Chan3[i].Cmd = InvAck -> Cache[j].State = I
+rule_7:   ExGntd = true & Chan3[i].Cmd = InvAck -> Chan3[j].Cmd != InvAck
+rule_8:   ExGntd = true & Chan3[i].Cmd = InvAck -> Chan3[i].Data = AuxData
